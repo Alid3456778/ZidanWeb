@@ -1,0 +1,1205 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Excellence Academy - Transform Your Future</title>
+    <link
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
+      rel="stylesheet"
+    />
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      body {
+        font-family: "Arial", sans-serif;
+        line-height: 1.6;
+        color: #333;
+        overflow-x: hidden;
+      }
+
+      :root {
+        --primary-gold: #ffd700;
+        --secondary-gold: #ffa500;
+        --dark-gold: #b8860b;
+        --white: #ffffff;
+        --light-gray: #f8f9fa;
+        --dark-gray: #2c3e50;
+        --shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+      }
+
+      /* Navigation */
+      .navbar {
+        position: fixed;
+        top: 0;
+        width: 100%;
+        background: var(--white);
+        padding: 1rem 2rem;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        box-shadow: var(--shadow);
+        z-index: 1000;
+        transition: all 0.3s ease;
+      }
+
+      .logo {
+        display: flex;
+        align-items: center;
+        font-size: 1.5rem;
+        font-weight: bold;
+        color: var(--dark-gold);
+      }
+
+      .logo i {
+        margin-right: 0.5rem;
+        font-size: 2rem;
+        color: var(--primary-gold);
+      }
+
+      .nav-links {
+        display: flex;
+        list-style: none;
+        gap: 2rem;
+        align-items: center;
+      }
+
+      .nav-links a {
+        text-decoration: none;
+        color: var(--dark-gray);
+        font-weight: 500;
+        transition: color 0.3s ease;
+        position: relative;
+      }
+
+      .nav-links a:hover {
+        color: var(--dark-gold);
+      }
+
+      .nav-links a::after {
+        content: "";
+        position: absolute;
+        bottom: -5px;
+        left: 0;
+        width: 0;
+        height: 2px;
+        background: var(--primary-gold);
+        transition: width 0.3s ease;
+      }
+
+      .nav-links a:hover::after {
+        width: 100%;
+      }
+
+      .phone-btn {
+        background: var(--primary-gold);
+        color: var(--dark-gray);
+        padding: 0.75rem 1.5rem;
+        border-radius: 25px;
+        text-decoration: none;
+        font-weight: bold;
+        transition: all 0.3s ease;
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+      }
+
+      .phone-btn:hover {
+        background: var(--dark-gold);
+        color: var(--white);
+        transform: translateY(-2px);
+      }
+
+      .hamburger {
+        display: none;
+        flex-direction: column;
+        cursor: pointer;
+        padding: 0.5rem;
+      }
+
+      .hamburger span {
+        width: 25px;
+        height: 3px;
+        background: var(--dark-gold);
+        margin: 3px 0;
+        transition: 0.3s;
+        border-radius: 3px;
+      }
+
+      /* Hero Section */
+      .hero {
+        margin-top: 80px;
+        /* background: linear-gradient(135deg, 
+                rgba(255, 215, 0, 0.85) 0%, 
+                rgba(255, 165, 0, 0.8) 50%, 
+                rgba(184, 134, 11, 0.9) 100%); */
+        position: relative;
+        min-height: 80vh;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: var(--white);
+        background-size: cover;
+        background-position: center;
+        background-repeat: no-repeat;
+        background-attachment: fixed;
+      }
+
+      .hero::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        /* background: linear-gradient(
+          135deg,
+          rgba(255, 215, 0, 0.85) 0%,
+          rgba(255, 165, 0, 0.8) 50%,
+          rgba(184, 134, 11, 0.9) 100%
+        ); */
+        z-index: 1;
+      }
+
+      .hero-content {
+        position: relative;
+        z-index: 3;
+        text-align: center;
+        padding: 2rem;
+        /* max-width: 800px; */
+        animation: fadeInUp 1.2s ease-out;
+        display: flex;
+        justify-content: space-between;
+      }
+
+      .hero h1 {
+        font-size: 3.5rem;
+        margin-bottom: 1.5rem;
+        text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.4);
+        font-weight: 700;
+        line-height: 1.2;
+      }
+
+      .hero-text {
+        max-width: 600px;
+        margin-right: 2rem;
+        text-align: left;
+      }
+
+      .hero-subtitle {
+        font-size: 1.4rem;
+        margin-bottom: 1rem;
+        font-weight: 600;
+        text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+        color: #fff8dc;
+      }
+
+      .hero p {
+        font-size: 1.2rem;
+        margin-bottom: 3rem;
+        text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.3);
+        line-height: 1.6;
+      }
+
+      .hero-stats {
+        display: flex;
+        justify-content: center;
+        gap: 3rem;
+        margin-bottom: 3rem;
+        flex-wrap: wrap;
+      }
+
+      .stat-item {
+        text-align: center;
+        background: rgba(255, 255, 255, 0.15);
+        padding: 1.2rem;
+        border-radius: 15px;
+        backdrop-filter: blur(10px);
+        border: 1px solid rgba(255, 255, 255, 0.2);
+        min-width: 100px;
+        transition: transform 0.3s ease;
+        flex-shrink: 0;
+      }
+
+      .stat-item:hover {
+        transform: translateY(-5px);
+        background: rgba(255, 255, 255, 0.2);
+      }
+
+      .stat-number {
+        font-size: 2.5rem;
+        font-weight: bold;
+        display: block;
+        color: #fff8dc;
+      }
+
+      .stat-label {
+        font-size: 0.9rem;
+        margin-top: 0.5rem;
+        opacity: 0.9;
+      }
+
+      .hero-buttons {
+        display: flex;
+        gap: 1.5rem;
+        justify-content: center;
+        flex-wrap: wrap;
+      }
+
+      .cta-btn {
+        background: var(--white);
+        color: var(--dark-gold);
+        padding: 1.2rem 2.5rem;
+        border: none;
+        border-radius: 50px;
+        font-size: 1.1rem;
+        font-weight: bold;
+        cursor: pointer;
+        transition: all 0.4s ease;
+        text-decoration: none;
+        display: inline-block;
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+      }
+
+      .cta-btn:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
+        background: #fff8dc;
+      }
+
+      .cta-btn-secondary {
+        background: transparent;
+        color: var(--white);
+        border: 2px solid var(--white);
+      }
+
+      .cta-btn-secondary:hover {
+        background: var(--white);
+        color: var(--dark-gold);
+      }
+
+      @keyframes fadeInUp {
+        0% {
+          opacity: 0;
+          transform: translateY(30px);
+        }
+        100% {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+
+      /* Marquee Section - Now as separate section */
+      .marquee-container {
+        background: var(--light-gray);
+        padding: 0;
+        position: relative;
+        overflow: hidden;
+        height: 300px;
+      }
+
+      .marquee-content {
+        display: flex;
+        align-items: center;
+        animation: infiniteScroll 25s linear infinite;
+        width: calc(400% + 12rem);
+      }
+
+      .marquee-item {
+        flex: 0 0 auto;
+        margin-right: 0;
+      }
+
+      .marquee-item img {
+        width: 50vw;
+        height: 300px;
+        min-width: 400px;
+        object-fit: cover;
+        display: block;
+      }
+
+      .marquee-center {
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        transform: translate(-50%, -50%);
+        background: var(--white);
+        padding: 2rem;
+        border-radius: 20px;
+        box-shadow: 0 8px 30px rgba(0, 0, 0, 0.15);
+        z-index: 2;
+        text-align: center;
+      }
+
+      .marquee-center h3 {
+        color: var(--dark-gold);
+        font-size: 1.5rem;
+        margin-bottom: 0.5rem;
+      }
+
+      @keyframes infiniteScroll {
+        0% {
+          transform: translateX(0);
+        }
+        100% {
+          transform: translateX(-25%);
+        }
+      }
+
+      /* Courses Section */
+      .courses {
+        padding: 4rem 2rem;
+        background: var(--white);
+      }
+
+      .section-title {
+        text-align: center;
+        font-size: 2.5rem;
+        color: var(--dark-gold);
+        margin-bottom: 3rem;
+        position: relative;
+      }
+
+      .section-title::after {
+        content: "";
+        position: absolute;
+        bottom: -10px;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 80px;
+        height: 4px;
+        background: var(--primary-gold);
+        border-radius: 2px;
+      }
+
+      .courses-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        gap: 2rem;
+        max-width: 1200px;
+        margin: 0 auto;
+      }
+
+      .course-card {
+        background: var(--white);
+        border-radius: 20px;
+        box-shadow: var(--shadow);
+        overflow: hidden;
+        transition: all 0.3s ease;
+        position: relative;
+      }
+
+      .course-card:hover {
+        transform: translateY(-10px);
+        box-shadow: 0 15px 40px rgba(0, 0, 0, 0.15);
+      }
+
+      .course-card img {
+        width: 100%;
+        height: 200px;
+        object-fit: cover;
+      }
+
+      .course-content {
+        padding: 1.5rem;
+      }
+
+      .course-content h3 {
+        color: var(--dark-gold);
+        font-size: 1.3rem;
+        margin-bottom: 1rem;
+      }
+
+      .course-content p {
+        color: var(--dark-gray);
+        line-height: 1.6;
+        margin-bottom: 1rem;
+      }
+
+      .course-badge {
+        position: absolute;
+        top: 15px;
+        right: 15px;
+        background: var(--primary-gold);
+        color: var(--dark-gray);
+        padding: 0.5rem 1rem;
+        border-radius: 15px;
+        font-size: 0.9rem;
+        font-weight: bold;
+      }
+
+      .cources-btn {
+        background: var(--primary-gold);
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        color: var(--dark-gray);
+        font-size: 1rem;
+        font-weight: bold;
+        padding: 0.7rem 1.5rem;
+        transition: all 0.3s ease;
+        text-align: center;
+        width: 100%;
+      }
+
+      /* All Courses Section */
+      .all-courses {
+        background: var(--light-gray);
+        padding: 3rem 2rem;
+        text-align: center;
+      }
+
+      .all-courses-btn {
+        background: linear-gradient(
+          135deg,
+          var(--primary-gold),
+          var(--secondary-gold)
+        );
+        color: var(--white);
+        padding: 1.2rem 3rem;
+        border: none;
+        border-radius: 30px;
+        font-size: 1.2rem;
+        font-weight: bold;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        text-decoration: none;
+        display: inline-block;
+      }
+
+      .all-courses-btn:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 10px 30px rgba(255, 215, 0, 0.4);
+      }
+
+      /* Contact Section */
+      .contact {
+        padding: 4rem 2rem;
+        background: var(--white);
+      }
+
+      .contact-container {
+        max-width: 800px;
+        margin: 0 auto;
+      }
+
+      .contact-form {
+        background: var(--light-gray);
+        padding: 3rem;
+        border-radius: 20px;
+        box-shadow: var(--shadow);
+      }
+
+      .form-group {
+        margin-bottom: 1.5rem;
+      }
+
+      .form-group label {
+        display: block;
+        margin-bottom: 0.5rem;
+        color: var(--dark-gold);
+        font-weight: bold;
+      }
+
+      .form-group input,
+      .form-group textarea {
+        width: 100%;
+        padding: 1rem;
+        border: 2px solid transparent;
+        border-radius: 10px;
+        font-size: 1rem;
+        transition: all 0.3s ease;
+        background: var(--white);
+      }
+
+      .form-group input:focus,
+      .form-group textarea:focus {
+        outline: none;
+        border-color: var(--primary-gold);
+        box-shadow: 0 0 10px rgba(255, 215, 0, 0.2);
+      }
+
+      .submit-btn {
+        background: var(--primary-gold);
+        color: var(--dark-gray);
+        padding: 1rem 2rem;
+        border: none;
+        border-radius: 25px;
+        font-size: 1.1rem;
+        font-weight: bold;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        width: 100%;
+      }
+
+      .submit-btn:hover {
+        background: var(--dark-gold);
+        color: var(--white);
+        transform: translateY(-2px);
+      }
+
+      /* Footer */
+      .footer {
+        background: var(--dark-gray);
+        color: var(--white);
+        padding: 3rem 2rem 1rem;
+      }
+
+      .footer-content {
+        max-width: 1200px;
+        margin: 0 auto;
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        gap: 2rem;
+      }
+
+      .footer-section h3 {
+        color: var(--primary-gold);
+        margin-bottom: 1rem;
+        font-size: 1.3rem;
+      }
+
+      .footer-section p,
+      .footer-section a {
+        color: var(--white);
+        text-decoration: none;
+        line-height: 1.8;
+        transition: color 0.3s ease;
+      }
+
+      .footer-section a:hover {
+        color: var(--primary-gold);
+      }
+
+      .social-links {
+        display: flex;
+        gap: 1rem;
+        margin-top: 1rem;
+      }
+
+      .social-links a {
+        background: var(--primary-gold);
+        color: var(--dark-gray);
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        transition: all 0.3s ease;
+      }
+
+      .social-links a:hover {
+        background: var(--white);
+        transform: translateY(-3px);
+      }
+
+      .footer-bottom {
+        text-align: center;
+        margin-top: 2rem;
+        padding-top: 2rem;
+        border-top: 1px solid rgba(255, 255, 255, 0.1);
+        color: rgba(255, 255, 255, 0.7);
+      }
+
+      /* Mobile Responsive */
+      @media (max-width: 768px) {
+        .nav-links {
+          position: fixed;
+          top: 80px;
+          left: -100%;
+          width: 100%;
+          height: calc(100vh - 80px);
+          background: var(--white);
+          flex-direction: column;
+          justify-content: start;
+          padding-top: 2rem;
+          transition: left 0.3s ease;
+          box-shadow: var(--shadow);
+        }
+
+        .nav-links.active {
+          left: 0;
+        }
+
+        .hamburger {
+          display: flex;
+        }
+
+        .hamburger.active span:nth-child(1) {
+          transform: rotate(45deg) translate(5px, 5px);
+        }
+
+        .hamburger.active span:nth-child(2) {
+          opacity: 0;
+        }
+
+        .hamburger.active span:nth-child(3) {
+          transform: rotate(-45deg) translate(7px, -6px);
+        }
+
+        .hero h1 {
+          font-size: 2.5rem;
+        }
+
+        .hero-subtitle {
+          font-size: 1.1rem;
+        }
+
+        .hero p {
+          font-size: 1rem;
+        }
+
+        .hero-top-section {
+          flex-direction: column;
+          align-items: center;
+          text-align: center;
+        }
+
+        .hero-subtitle {
+          text-align: center;
+          margin-bottom: 1rem;
+        }
+
+        .hero-content {
+          flex-direction: column; /* stack items vertically */
+          text-align: center; /* center text */
+          gap: 1.5rem; /* reduce spacing */
+        }
+
+        /* .hero-stats {
+          justify-content: center;
+          gap: 1.5rem;
+        }
+
+        .stat-item {
+          padding: 1rem;
+          min-width: 100px;
+        }
+
+        .stat-number {
+          font-size: 2rem;
+        } */
+
+        .hero-stats {
+          gap: 1.5rem;
+        }
+        .stat-item {
+          flex: 1 1 45%; /* two per row */
+          max-width: 250px;
+        }
+
+        .hero-buttons {
+          flex-direction: column;
+          align-items: center;
+        }
+
+        .cta-btn {
+          width: 100%;
+          max-width: 280px;
+          text-align: center;
+        }
+
+        .section-title {
+          font-size: 2rem;
+        }
+
+        .courses-grid {
+          grid-template-columns: 1fr;
+        }
+
+        .navbar {
+          padding: 1rem;
+        }
+
+        .contact-form {
+          padding: 2rem 1rem;
+        }
+
+        .marquee-center {
+          padding: 1rem;
+        }
+      }
+
+      @media (max-width: 480px) {
+        .logo {
+          font-size: 1rem;
+        }
+
+        .phone-btn h3 {
+          display: none;
+        }
+
+        .hero {
+          padding: 2rem 1rem;
+          min-height: 70vh;
+        }
+
+        .hero-content {
+          padding: 1rem;
+          flex-direction: column; /* stack items vertically */
+          text-align: center; /* center text */
+          gap: 1.5rem;
+        }
+
+        /* .hero-rightsection{
+          display: none;
+        } */
+        .stat-item {
+          flex: 1 1 100%; /* one per row */
+          max-width: 100%;
+        }
+
+        .courses,
+        .contact,
+        .all-courses {
+          padding: 2rem 1rem;
+        }
+
+        .footer {
+          padding: 2rem 1rem 1rem;
+        }
+      }
+      /* Floating Action Button for Mobile */
+      .floating-enquire {
+        display: flex;
+        position: fixed;
+        bottom: 20px;
+        right: 20px;
+        background: linear-gradient(
+          135deg,
+          var(--primary-gold),
+          var(--secondary-gold)
+        );
+        color: var(--white);
+        width: 60px;
+        height: 60px;
+        border-radius: 50%;
+        border: none;
+        font-size: 1.5rem;
+        cursor: pointer;
+        box-shadow: 0 4px 20px rgba(255, 215, 0, 0.4);
+        transition: all 0.3s ease;
+        z-index: 999;
+
+        align-items: center;
+        justify-content: center;
+      }
+
+      .floating-enquire:hover {
+        transform: scale(1.1);
+        box-shadow: 0 6px 25px rgba(255, 215, 0, 0.6);
+      }
+
+      @media (max-width: 768px) {
+        .floating-enquire {
+          display: flex;
+          align-items: center;
+          justify-content: center;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <!-- Navigation -->
+    <nav class="navbar">
+      <div class="logo">
+        <i class="fas fa-graduation-cap"></i>
+        Excellence Academy
+      </div>
+      <ul class="nav-links" id="navLinks">
+        <li><a href="#courses">Courses</a></li>
+        <li><a href="#gallery">Gallery</a></li>
+        <li><a href="#about">About Us</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+      <a href="tel:+1234567890" class="phone-btn">
+        <i class="fas fa-phone"></i>
+        <h3>Call Now</h3>
+      </a>
+      <div class="hamburger" id="hamburger">
+        <span></span>
+        <span></span>
+        <span></span>
+      </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero" id="hero">
+      <div class="hero-content">
+        <div class="hero-text">
+          <div class="hero-subtitle">🎓 Excellence Academy</div>
+          <h1>Transform Your Future Today</h1>
+          <p>
+            Join thousands of students who have achieved their dreams through
+            our comprehensive courses, expert guidance, and industry-leading
+            curriculum designed for success.
+          </p>
+        </div>
+        <div class="hero-rightsection">
+          <div class="hero-stats">
+            <div class="stat-item">
+              <span class="stat-number">10K+</span>
+              <div class="stat-label">Students Graduated</div>
+            </div>
+            <!-- <div class="stat-item">
+              <span class="stat-number">50+</span>
+              <div class="stat-label">Expert Instructors</div>
+            </div> -->
+            <div class="stat-item">
+              <span class="stat-number">95%</span>
+              <div class="stat-label">Job Placement</div>
+            </div>
+            <div class="stat-item">
+              <span class="stat-number">15+</span>
+              <div class="stat-label">Years Experience</div>
+            </div>
+          </div>
+
+          <div class="hero-buttons">
+            <a href="#courses" class="cta-btn">🚀 Explore Courses</a>
+            <a href="#contact" class="cta-btn cta-btn-secondary"
+              >📞 Get Free Consultation</a
+            >
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Courses Section -->
+    <section class="courses" id="courses">
+      <h2 class="section-title">Featured Courses</h2>
+      <div class="courses-grid">
+        <div class="course-card">
+          <div class="course-badge">Popular</div>
+          <img
+            src="https://images.unsplash.com/photo-1516321318423-f06f85e504b3?w=400&h=200&fit=crop"
+            alt="Web Development"
+          />
+          <div class="course-content">
+            <h3>Full Stack Web Development</h3>
+            <p>
+              Master modern web technologies including HTML5, CSS3, JavaScript,
+              React, Node.js, and database management. Build real-world projects
+              and launch your career in tech.
+            </p>
+            <a href=""><button class="cources-btn">CheckOut</button></a>
+          </div>
+        </div>
+        <div class="course-card">
+          <div class="course-badge">New</div>
+          <img
+            src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=400&h=200&fit=crop"
+            alt="Data Science"
+          />
+          <div class="course-content">
+            <h3>Data Science & Analytics</h3>
+            <p>
+              Learn Python, machine learning, statistical analysis, and data
+              visualization. Transform raw data into actionable insights for
+              business success.
+            </p>
+            <a href=""><button class="cources-btn">CheckOut</button></a>
+          </div>
+        </div>
+        <div class="course-card">
+          <div class="course-badge">Trending</div>
+          <img
+            src="https://images.unsplash.com/photo-1560472354-b33ff0c44a43?w=400&h=200&fit=crop"
+            alt="Digital Marketing"
+          />
+          <div class="course-content">
+            <h3>Digital Marketing Mastery</h3>
+            <p>
+              Master SEO, social media marketing, content strategy, PPC
+              advertising, and analytics. Grow businesses and build your
+              marketing expertise.
+            </p>
+            <a href=""><button class="cources-btn">CheckOut</button></a>
+          </div>
+        </div>
+        <div class="course-card">
+          <div class="course-badge">Certified</div>
+          <img
+            src="https://images.unsplash.com/photo-1450101499163-c8848c66ca85?w=400&h=200&fit=crop"
+            alt="Business Analytics"
+          />
+          <div class="course-content">
+            <h3>Business Analytics</h3>
+            <p>
+              Learn advanced Excel, Power BI, Tableau, and business intelligence
+              tools. Make data-driven decisions and drive business growth.
+            </p>
+            <a href=""><button class="cources-btn">CheckOut</button></a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- All Courses Section -->
+    <section class="all-courses">
+      <h2 class="section-title">Ready to Start Learning?</h2>
+      <p style="font-size: 1.2rem; margin-bottom: 2rem; color: #666">
+        Discover all our comprehensive courses designed to boost your career
+      </p>
+      <a href="#contact" class="all-courses-btn">Find All Courses</a>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="contact" id="contact">
+      <div class="contact-container" id="contact-form">
+        <h2 class="section-title">Get In Touch</h2>
+        <div class="contact-form">
+          <h3
+            style="
+              text-align: center;
+              margin-bottom: 2rem;
+              color: var(--dark-gold);
+            "
+          >
+            Have Questions? We're Here to Help!
+          </h3>
+          <form id="contactForm">
+            <div class="form-group">
+              <label for="name">Full Name</label>
+              <input type="text" id="name" name="name" required />
+            </div>
+            <div class="form-group">
+              <label for="email">Email Address</label>
+              <input type="email" id="email" name="email" required />
+            </div>
+            <div class="form-group">
+              <label for="phone">Phone Number</label>
+              <input type="tel" id="phone" name="phone" />
+            </div>
+            <div class="form-group">
+              <label for="course">Course Interest</label>
+              <input
+                type="text"
+                id="course"
+                name="course"
+                placeholder="Which course are you interested in?"
+              />
+            </div>
+            <div class="form-group">
+              <label for="message">Your Message</label>
+              <textarea
+                id="message"
+                name="message"
+                rows="5"
+                placeholder="Tell us about your goals and how we can help you..."
+              ></textarea>
+            </div>
+            <button type="submit" class="submit-btn">Send Message</button>
+          </form>
+        </div>
+      </div>
+    </section>
+
+    <!-- About Section (hidden content for navigation) -->
+    <section id="about" style="padding: 1px"></section>
+
+    <!-- Footer -->
+    <footer class="footer">
+      <div class="footer-content">
+        <div class="footer-section">
+          <h3>Excellence Academy</h3>
+          <p>
+            Empowering students with world-class education and practical skills
+            for over a decade. Join our community of successful learners and
+            transform your career.
+          </p>
+          <div class="social-links">
+            <a href="#"><i class="fab fa-facebook-f"></i></a>
+            <a href="#"><i class="fab fa-instagram"></i></a>
+            <a href="#"><i class="fab fa-linkedin-in"></i></a>
+            <a href="#"><i class="fab fa-youtube"></i></a>
+          </div>
+        </div>
+        <div class="footer-section">
+          <h3>Quick Links</h3>
+          <p><a href="#courses">Our Courses</a></p>
+          <p><a href="#about">About Us</a></p>
+          <p><a href="#gallery">Gallery</a></p>
+          <p><a href="#contact">Contact</a></p>
+          <p><a href="#">Admissions</a></p>
+        </div>
+        <div class="footer-section">
+          <h3>Contact Info</h3>
+          <p>
+            <i class="fas fa-map-marker-alt"></i> 123 Education Street, Learning
+            City
+          </p>
+          <p><i class="fas fa-phone"></i> +1 (234) 567-8900</p>
+          <p><i class="fas fa-envelope"></i> info@excellenceacademy.edu</p>
+          <p><i class="fas fa-clock"></i> Mon-Fri: 9AM-6PM</p>
+        </div>
+        <div class="footer-section">
+          <!-- <h3>Newsletter</h3>
+          <p>Stay updated with our latest courses and educational content.</p>
+          <div style="margin-top: 1rem">
+            <input
+              type="email"
+              placeholder="Enter your email"
+              style="
+                padding: 0.7rem;
+                border: none;
+                border-radius: 5px;
+                width: 70%;
+                margin-right: 10px;
+              "
+            />
+            <button
+              style="
+                padding: 0.7rem 1rem;
+                background: var(--primary-gold);
+                border: none;
+                border-radius: 5px;
+                cursor: pointer;
+              "
+            >
+              Subscribe
+            </button>
+          </div> -->
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>
+          &copy; 2025 Excellence Academy. All rights reserved. | Privacy Policy
+          | Terms of Service
+        </p>
+      </div>
+    </footer>
+    <button
+      class="floating-enquire"
+      onclick="document.getElementById('contact-form').scrollIntoView({behavior: 'smooth'})"
+    >
+      <i class="fas fa-comment-dots"></i>
+    </button>
+
+    <script>
+      // Hero Image Slider
+      const hero = document.getElementById("hero");
+      const images = [
+        "https://images.unsplash.com/photo-1522202176988-66273c2fd55f?w=1920&h=1080&fit=crop",
+        "https://images.unsplash.com/photo-1523050854058-8df90110c9f1?w=1920&h=1080&fit=crop",
+        "https://images.unsplash.com/photo-1503676260728-1c00da094a0b?w=1920&h=1080&fit=crop",
+      ];
+      let i = 0;
+
+      // Set initial background image
+      hero.style.backgroundImage = `url(${images[0]})`;
+
+      setInterval(() => {
+        i = (i + 1) % images.length;
+        hero.style.backgroundImage = `url(${images[i]})`;
+      }, 4000);
+
+      // Mobile Navigation
+      const hamburger = document.getElementById("hamburger");
+      const navLinks = document.getElementById("navLinks");
+
+      hamburger.addEventListener("click", () => {
+        navLinks.classList.toggle("active");
+        hamburger.classList.toggle("active");
+      });
+
+      // Close menu when clicking on a link
+      document.querySelectorAll(".nav-links a").forEach((link) => {
+        link.addEventListener("click", () => {
+          navLinks.classList.remove("active");
+          hamburger.classList.remove("active");
+        });
+      });
+
+      // Smooth scrolling
+      document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
+        anchor.addEventListener("click", function (e) {
+          e.preventDefault();
+          const target = document.querySelector(this.getAttribute("href"));
+          if (target) {
+            target.scrollIntoView({
+              behavior: "smooth",
+              block: "start",
+            });
+          }
+        });
+      });
+
+      // Navbar scroll effect
+      window.addEventListener("scroll", () => {
+        const navbar = document.querySelector(".navbar");
+        if (window.scrollY > 100) {
+          navbar.style.background = "rgba(255, 255, 255, 0.95)";
+          navbar.style.backdropFilter = "blur(10px)";
+        } else {
+          navbar.style.background = "var(--white)";
+          navbar.style.backdropFilter = "none";
+        }
+      });
+
+      // Contact form handling
+      document
+        .getElementById("contactForm")
+        .addEventListener("submit", function (e) {
+          e.preventDefault();
+
+          // Get form data
+          const formData = new FormData(this);
+          const data = Object.fromEntries(formData);
+
+          // Create mailto link
+          const subject = `Course Inquiry from ${data.name}`;
+          const body = `Name: ${data.name}
+Email: ${data.email}
+Phone: ${data.phone || "Not provided"}
+Course Interest: ${data.course || "General inquiry"}
+
+Message:
+${data.message}`;
+
+          const mailtoLink = `mailto:info@excellenceacademy.edu?subject=${encodeURIComponent(
+            subject
+          )}&body=${encodeURIComponent(body)}`;
+
+          // Open email client
+          window.location.href = mailtoLink;
+
+          // Show success message
+          alert(
+            "Thank you for your interest! Your email client will open to send your inquiry."
+          );
+
+          // Reset form
+          this.reset();
+        });
+
+      // Animate elements on scroll
+      const observerOptions = {
+        threshold: 0.1,
+        rootMargin: "0px 0px -50px 0px",
+      };
+
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.style.opacity = "1";
+            entry.target.style.transform = "translateY(0)";
+          }
+        });
+      }, observerOptions);
+
+      // Observe course cards
+      document.querySelectorAll(".course-card").forEach((card) => {
+        card.style.opacity = "0";
+        card.style.transform = "translateY(30px)";
+        card.style.transition = "all 0.6s ease";
+        observer.observe(card);
+      });
+    </script>
+  </body>
+</html>
