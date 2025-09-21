@@ -1,0 +1,872 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Contact Us - Excellence Academy</title>
+    <link
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
+      rel="stylesheet"
+    />
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      body {
+        font-family: "Arial", sans-serif;
+        line-height: 1.6;
+        color: #333;
+      }
+
+      :root {
+        --primary-gold: #ffd700;
+        --secondary-gold: #ffa500;
+        --dark-gold: #b8860b;
+        --white: #ffffff;
+        --light-gray: #f8f9fa;
+        --dark-gray: #2c3e50;
+        --shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+      }
+
+      /* Navigation */
+      .navbar {
+        position: fixed;
+        top: 0;
+        width: 100%;
+        background: var(--white);
+        padding: 1rem 2rem;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        box-shadow: var(--shadow);
+        z-index: 1000;
+        transition: all 0.3s ease;
+      }
+
+      .logo {
+        display: flex;
+        align-items: center;
+        font-size: 1.5rem;
+        font-weight: bold;
+        color: var(--dark-gold);
+      }
+
+      .logo i {
+        margin-right: 0.5rem;
+        font-size: 2rem;
+        color: var(--primary-gold);
+      }
+
+      .nav-links {
+        display: flex;
+        list-style: none;
+        gap: 2rem;
+        align-items: center;
+      }
+
+      .nav-links a {
+        text-decoration: none;
+        color: var(--dark-gray);
+        font-weight: 500;
+        transition: color 0.3s ease;
+        position: relative;
+      }
+
+      .nav-links a:hover {
+        color: var(--dark-gold);
+      }
+
+      .nav-links a::after {
+        content: "";
+        position: absolute;
+        bottom: -5px;
+        left: 0;
+        width: 0;
+        height: 2px;
+        background: var(--primary-gold);
+        transition: width 0.3s ease;
+      }
+
+      .nav-links a:hover::after {
+        width: 100%;
+      }
+
+      .phone-btn {
+        background: var(--primary-gold);
+        color: var(--dark-gray);
+        padding: 0.75rem 1.5rem;
+        border-radius: 25px;
+        text-decoration: none;
+        font-weight: bold;
+        transition: all 0.3s ease;
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+      }
+
+      .phone-btn:hover {
+        background: var(--dark-gold);
+        color: var(--white);
+        transform: translateY(-2px);
+      }
+
+      .hamburger {
+        display: none;
+        flex-direction: column;
+        cursor: pointer;
+        padding: 0.5rem;
+      }
+
+      .hamburger span {
+        width: 25px;
+        height: 3px;
+        background: var(--dark-gold);
+        margin: 3px 0;
+        transition: 0.3s;
+        border-radius: 3px;
+      }
+
+      /* Header */
+      .contact-header {
+        margin-top: 80px;
+        background: linear-gradient(
+          135deg,
+          var(--primary-gold) 0%,
+          var(--secondary-gold) 100%
+        );
+        padding: 4rem 2rem;
+        text-align: center;
+        color: var(--white);
+      }
+
+      .contact-header h1 {
+        font-size: 3rem;
+        margin-bottom: 1rem;
+        text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+      }
+
+      .contact-header p {
+        font-size: 1.2rem;
+        max-width: 600px;
+        margin: 0 auto;
+      }
+
+      /* Contact Info Section */
+      .contact-info {
+        padding: 4rem 2rem;
+        background: var(--white);
+      }
+
+      .container {
+        max-width: 1200px;
+        margin: 0 auto;
+      }
+
+      .section-title {
+        text-align: center;
+        font-size: 2.5rem;
+        color: var(--dark-gold);
+        margin-bottom: 3rem;
+      }
+
+      .contact-cards {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+        gap: 2rem;
+        margin-bottom: 4rem;
+      }
+
+      .contact-card {
+        background: var(--white);
+        padding: 2rem;
+        border-radius: 15px;
+        box-shadow: var(--shadow);
+        text-align: center;
+        transition: transform 0.3s ease;
+      }
+
+      .contact-card:hover {
+        transform: translateY(-10px);
+      }
+
+      .contact-card .icon {
+        background: var(--primary-gold);
+        color: var(--white);
+        width: 70px;
+        height: 70px;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 1.8rem;
+        margin: 0 auto 1.5rem;
+      }
+
+      .contact-card h3 {
+        color: var(--dark-gold);
+        font-size: 1.3rem;
+        margin-bottom: 1rem;
+      }
+
+      .contact-card p {
+        color: var(--dark-gray);
+        margin-bottom: 0.5rem;
+      }
+
+      .contact-card .highlight {
+        color: var(--secondary-gold);
+        font-weight: bold;
+      }
+
+      /* Contact Form */
+      .contact-form-section {
+        background: var(--light-gray);
+        padding: 4rem 2rem;
+      }
+
+      .form-container {
+        max-width: 800px;
+        margin: 0 auto;
+      }
+
+      .contact-form {
+        background: var(--white);
+        padding: 3rem;
+        border-radius: 20px;
+        box-shadow: var(--shadow);
+      }
+
+      .form-header {
+        text-align: center;
+        margin-bottom: 2rem;
+      }
+
+      .form-header h3 {
+        color: var(--dark-gold);
+        font-size: 2rem;
+        margin-bottom: 1rem;
+      }
+
+      .form-row {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        gap: 1.5rem;
+        margin-bottom: 1.5rem;
+      }
+
+      .form-group {
+        margin-bottom: 1.5rem;
+      }
+
+      .form-group label {
+        display: block;
+        margin-bottom: 0.5rem;
+        color: var(--dark-gold);
+        font-weight: bold;
+      }
+
+      .form-group input,
+      .form-group select,
+      .form-group textarea {
+        width: 100%;
+        padding: 1rem;
+        border: 2px solid #ddd;
+        border-radius: 10px;
+        font-size: 1rem;
+        transition: border-color 0.3s ease;
+      }
+
+      .form-group input:focus,
+      .form-group select:focus,
+      .form-group textarea:focus {
+        outline: none;
+        border-color: var(--primary-gold);
+      }
+
+      .form-group textarea {
+        height: 120px;
+        resize: vertical;
+      }
+
+      .submit-btn {
+        background: linear-gradient(
+          135deg,
+          var(--primary-gold),
+          var(--secondary-gold)
+        );
+        color: var(--white);
+        padding: 1rem 2rem;
+        border: none;
+        border-radius: 25px;
+        font-size: 1.1rem;
+        font-weight: bold;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        width: 100%;
+      }
+
+      .submit-btn:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 8px 25px rgba(255, 215, 0, 0.4);
+      }
+
+      /* Map Section */
+      .map-section {
+        padding: 4rem 2rem;
+        background: var(--white);
+      }
+
+      .map-wrapper {
+        position: relative;
+        height: 450px;
+        border-radius: 15px;
+        overflow: hidden;
+        box-shadow: var(--shadow);
+      }
+
+      .google-map {
+        width: 100%;
+        height: 100%;
+        border: none;
+        border-radius: 15px;
+      }
+
+      .map-overlay {
+        position: absolute;
+        top: 20px;
+        right: 20px;
+        background: var(--white);
+        padding: 1.5rem;
+        border-radius: 10px;
+        box-shadow: var(--shadow);
+        max-width: 280px;
+        z-index: 10;
+      }
+
+      .map-overlay h4 {
+        color: var(--dark-gold);
+        margin-bottom: 0.5rem;
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+      }
+
+      .map-overlay p {
+        color: var(--dark-gray);
+        font-size: 0.9rem;
+        margin-bottom: 0.3rem;
+      }
+
+      .directions-btn {
+        background: var(--primary-gold);
+        color: var(--dark-gray);
+        padding: 0.7rem 1rem;
+        border: none;
+        border-radius: 20px;
+        font-weight: bold;
+        cursor: pointer;
+        margin-top: 1rem;
+        width: 100%;
+        transition: all 0.3s ease;
+        font-size: 0.9rem;
+      }
+
+      .directions-btn:hover {
+        background: var(--dark-gold);
+        color: var(--white);
+      }
+
+      @keyframes bounce {
+        0%,
+        20%,
+        50%,
+        80%,
+        100% {
+          transform: rotate(-45deg) translateY(0);
+        }
+        40% {
+          transform: rotate(-45deg) translateY(-10px);
+        }
+        60% {
+          transform: rotate(-45deg) translateY(-5px);
+        }
+      }
+
+      /* Footer */
+      .footer {
+        background: var(--dark-gray);
+        color: var(--white);
+        padding: 3rem 2rem 1rem;
+      }
+
+      .footer-content {
+        max-width: 1200px;
+        margin: 0 auto;
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        gap: 2rem;
+      }
+
+      .footer-section h3 {
+        color: var(--primary-gold);
+        margin-bottom: 1rem;
+      }
+
+      .footer-section p,
+      .footer-section a {
+        color: var(--white);
+        text-decoration: none;
+        line-height: 1.8;
+      }
+
+      .footer-section a:hover {
+        color: var(--primary-gold);
+      }
+
+      .social-links {
+        display: flex;
+        gap: 1rem;
+        margin-top: 1rem;
+      }
+
+      .social-links a {
+        background: var(--primary-gold);
+        color: var(--dark-gray);
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        transition: all 0.3s ease;
+      }
+
+      .social-links a:hover {
+        background: var(--white);
+        transform: translateY(-3px);
+      }
+
+      .footer-bottom {
+        text-align: center;
+        margin-top: 2rem;
+        padding-top: 2rem;
+        border-top: 1px solid rgba(255, 255, 255, 0.1);
+        color: rgba(255, 255, 255, 0.7);
+      }
+
+      /* Mobile Responsive */
+      @media (max-width: 768px) {
+        .nav-links {
+          position: fixed;
+          top: 80px;
+          left: -100%;
+          width: 100%;
+          height: calc(100vh - 80px);
+          background: var(--white);
+          flex-direction: column;
+          justify-content: start;
+          padding-top: 2rem;
+          transition: left 0.3s ease;
+          box-shadow: var(--shadow);
+        }
+
+        .nav-links.active {
+          left: 0;
+        }
+
+        .hamburger {
+          display: flex;
+        }
+
+        .hamburger.active span:nth-child(1) {
+          transform: rotate(45deg) translate(5px, 5px);
+        }
+
+        .hamburger.active span:nth-child(2) {
+          opacity: 0;
+        }
+
+        .hamburger.active span:nth-child(3) {
+          transform: rotate(-45deg) translate(7px, -6px);
+        }
+
+        .contact-header h1 {
+          font-size: 2rem;
+        }
+
+        .contact-cards {
+          grid-template-columns: 1fr;
+        }
+
+        .form-row {
+          grid-template-columns: 1fr;
+        }
+
+        .contact-form {
+          padding: 2rem 1.5rem;
+        }
+
+        .map-overlay {
+          position: static;
+          margin: 1rem;
+          max-width: none;
+        }
+
+        .map-wrapper {
+          height: 350px;
+        }
+
+        .navbar {
+          padding: 1rem;
+        }
+        .phone-btn h3 {
+          display: none;
+        }
+      }
+
+      @media (max-width: 480px) {
+        .contact-header {
+          padding: 2rem 1rem;
+        }
+
+        .contact-info,
+        .contact-form-section,
+        .map-section {
+          padding: 2rem 1rem;
+        }
+
+        .contact-form {
+          padding: 1.5rem 1rem;
+        }
+        .logo {
+          font-size: 1rem;
+        }
+
+        .phone-btn h3 {
+          display: none;
+        }
+
+        .footer {
+          padding: 2rem 1rem 1rem;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <!-- Navigation -->
+    <nav class="navbar">
+      <div class="logo">
+        <i class="fas fa-graduation-cap"></i>
+        Excellence Academy
+      </div>
+      <ul class="nav-links" id="navLinks">
+        <li><a href="#courses">Courses</a></li>
+        <li><a href="#gallery">Gallery</a></li>
+        <li><a href="#about">About Us</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+      <a href="tel:+1234567890" class="phone-btn">
+        <i class="fas fa-phone"></i>
+        <h3>Call Now</h3>
+      </a>
+      <div class="hamburger" id="hamburger">
+        <span></span>
+        <span></span>
+        <span></span>
+      </div>
+    </nav>
+
+    <!-- Header -->
+    <section class="contact-header">
+      <h1>Contact Us</h1>
+      <!-- <p>Get in touch with our team. We're here to help you start your learning journey and answer any questions you may have.</p> -->
+    </section>
+
+    <!-- Contact Info -->
+    <section class="contact-info">
+      <div class="container">
+        <h2 class="section-title">Get In Touch</h2>
+        <div class="contact-cards">
+          <div class="contact-card">
+            <div class="icon">
+              <i class="fas fa-map-marker-alt"></i>
+            </div>
+            <h3>Our Address</h3>
+            <p>123 Education Street</p>
+            <p>Learning District</p>
+            <p class="highlight">Mumbai, Maharashtra 400001</p>
+            <p>India</p>
+          </div>
+
+          <div class="contact-card">
+            <div class="icon">
+              <i class="fas fa-phone-alt"></i>
+            </div>
+            <h3>Phone Numbers</h3>
+            <p><span class="highlight">Main:</span> +91 22 1234 5678</p>
+            <p><span class="highlight">Admissions:</span> +91 22 8765 4321</p>
+            <p><span class="highlight">Support:</span> +91 22 9876 5432</p>
+            <p><span class="highlight">WhatsApp:</span> +91 98765 43210</p>
+          </div>
+
+          <div class="contact-card">
+            <div class="icon">
+              <i class="fas fa-envelope"></i>
+            </div>
+            <h3>Email Addresses</h3>
+            <p>
+              <span class="highlight">General:</span> info@excellenceacademy.edu
+            </p>
+            <p>
+              <span class="highlight">Admissions:</span>
+              admissions@excellenceacademy.edu
+            </p>
+            <p>
+              <span class="highlight">Support:</span>
+              support@excellenceacademy.edu
+            </p>
+            <p>
+              <span class="highlight">Careers:</span>
+              careers@excellenceacademy.edu
+            </p>
+          </div>
+
+          <div class="contact-card">
+            <div class="icon">
+              <i class="fas fa-clock"></i>
+            </div>
+            <h3>Working Hours</h3>
+            <p>
+              <span class="highlight">Monday - Friday:</span> 9:00 AM - 7:00 PM
+            </p>
+            <p><span class="highlight">Saturday:</span> 10:00 AM - 5:00 PM</p>
+            <p><span class="highlight">Sunday:</span> Closed</p>
+            <p><span class="highlight">Online Support:</span> 24/7 Available</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Contact Form -->
+    <section class="contact-form-section">
+      <div class="container">
+        <div class="form-container">
+          <div class="contact-form">
+            <div class="form-header">
+              <h3>Send Us a Message</h3>
+              <p>
+                Have questions? Fill out the form below and we'll get back to
+                you within 24 hours.
+              </p>
+            </div>
+
+            <form
+              id="contactForm"
+              action="https://formsubmit.co/sunbreathing13form@gmail.com"
+              method="post"
+            >
+              <div class="form-row">
+                <div class="form-group">
+                  <label for="name">Full Name *</label>
+                  <input type="text" id="name" name="name" required />
+                </div>
+                <div class="form-group">
+                  <label for="email">Email Address *</label>
+                  <input type="email" id="email" name="email" required />
+                </div>
+              </div>
+
+              <div class="form-row">
+                <div class="form-group">
+                  <label for="phone">Phone Number *</label>
+                  <input type="tel" id="phone" name="phone" required />
+                </div>
+                <!-- <div class="form-group">
+                  <label for="subject">Subject *</label>
+                  <select id="subject" name="subject" required>
+                    <option value="">Select a subject</option>
+                    <option value="course-inquiry">Course Inquiry</option>
+                    <option value="admission">Admission Process</option>
+                    <option value="fee-structure">Fee Structure</option>
+                    <option value="technical-support">Technical Support</option>
+                    <option value="career-guidance">Career Guidance</option>
+                    <option value="other">Other</option>
+                  </select>
+                </div> -->
+              </div>
+
+              <div class="form-group">
+                <label for="message">Your Message *</label>
+                <textarea
+                  id="message"
+                  name="message"
+                  placeholder="Please provide details about your inquiry..."
+                  required
+                ></textarea>
+              </div>
+
+              <button type="submit" class="submit-btn">
+                <i class="fas fa-paper-plane"></i>
+                Send Message
+              </button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Map Section -->
+    <section class="map-section">
+      <div class="container">
+        <h2 class="section-title">Find Us Here</h2>
+        <div class="map-wrapper">
+          <!-- Google Maps Embed -->
+          <iframe
+            class="google-map"
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3771.9979748355284!2d72.82606431490285!3d19.017615287146632!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3be7ce24db2c0a57%3A0x74f0c02d2df4c1e8!2sEducation%20Street%2C%20Fort%2C%20Mumbai%2C%20Maharashtra%20400001%2C%20India!5e0!3m2!1sen!2sus!4v1640000000000!5m2!1sen!2sus"
+            allowfullscreen=""
+            loading="lazy"
+            referrerpolicy="no-referrer-when-downgrade"
+          >
+          </iframe>
+
+          <!-- Map Info Overlay -->
+          <div class="map-overlay">
+            <h4><i class="fas fa-map-marker-alt"></i> Excellence Academy</h4>
+            <p><strong>123 Education Street</strong></p>
+            <p>Learning District, Mumbai</p>
+            <p>Maharashtra 400001, India</p>
+            <p><i class="fas fa-subway"></i> Metro: CST Station (1.2km)</p>
+            <p><i class="fas fa-bus"></i> Bus: Fort Bus Stop (300m)</p>
+            <p><i class="fas fa-parking"></i> Parking: Available</p>
+            <button class="directions-btn" onclick="getDirections()">
+              <i class="fas fa-directions"></i> Get Directions
+            </button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+      <div class="footer-content">
+        <div class="footer-section">
+          <h3>Excellence Academy</h3>
+          <p>
+            Empowering students with world-class education and practical skills
+            for over a decade. Join our community of successful learners and
+            transform your career.
+          </p>
+          <div class="social-links">
+            <a href="#"><i class="fab fa-facebook-f"></i></a>
+            <a href="#"><i class="fab fa-instagram"></i></a>
+            <a href="#"><i class="fab fa-linkedin-in"></i></a>
+            <a href="#"><i class="fab fa-youtube"></i></a>
+          </div>
+        </div>
+        <div class="footer-section">
+          <h3>Quick Links</h3>
+          <p><a href="cources1.html">Our Courses</a></p>
+          <p><a href="#about">About Us</a></p>
+          <p><a href="#gallery">Gallery</a></p>
+          <p><a href="#contact">Contact</a></p>
+          <p><a href="#">Admissions</a></p>
+        </div>
+        <div class="footer-section">
+          <h3>Contact Info</h3>
+          <p>
+            <i class="fas fa-map-marker-alt"></i> 123 Education Street, Mumbai
+          </p>
+          <p><i class="fas fa-phone"></i> +91 22 1234 5678</p>
+          <p><i class="fas fa-envelope"></i> info@excellenceacademy.edu</p>
+          <p><i class="fas fa-clock"></i> Mon-Fri: 9AM-7PM</p>
+        </div>
+        <div class="footer-section">
+          <h3>Popular Courses</h3>
+          <p><a href="#">Full Stack Development</a></p>
+          <p><a href="#">Data Science</a></p>
+          <p><a href="#">Digital Marketing</a></p>
+          <p><a href="#">UI/UX Design</a></p>
+          <p><a href="#">Business Analytics</a></p>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>
+          &copy; 2025 Excellence Academy. All rights reserved. | Privacy Policy
+          | Terms of Service
+        </p>
+      </div>
+    </footer>
+
+    <script>
+      // Mobile Navigation
+      const hamburger = document.getElementById("hamburger");
+      const navLinks = document.getElementById("navLinks");
+
+      hamburger.addEventListener("click", () => {
+        navLinks.classList.toggle("active");
+        hamburger.classList.toggle("active");
+      });
+
+      // Close menu when clicking on a link
+      document.querySelectorAll(".nav-links a").forEach((link) => {
+        link.addEventListener("click", () => {
+          navLinks.classList.remove("active");
+          hamburger.classList.remove("active");
+        });
+      });
+
+      // Contact form handling
+      document
+        .getElementById("contactForm")
+        .addEventListener("submit", function (e) {
+          e.preventDefault();
+
+          const formData = new FormData(this);
+          const data = Object.fromEntries(formData);
+
+          const subject = `Contact Form: ${data.subject} - ${data.name}`;
+          const body = `Name: ${data.name}
+Email: ${data.email}
+Phone: ${data.phone}
+Subject: ${data.subject}
+
+Message:
+${data.message}`;
+
+          const mailtoLink = `mailto:info@excellenceacademy.edu?subject=${encodeURIComponent(
+            subject
+          )}&body=${encodeURIComponent(body)}`;
+          window.location.href = mailtoLink;
+
+          alert("Thank you! Your email client will open to send your message.");
+          this.reset();
+        });
+
+      // Get directions function
+      function getDirections() {
+        const address =
+          "123 Education Street, Learning District, Mumbai, Maharashtra 400001, India";
+        const googleMapsUrl = `https://maps.google.com/maps?daddr=${encodeURIComponent(
+          address
+        )}`;
+        window.open(googleMapsUrl, "_blank");
+      }
+
+      // Navbar scroll effect
+      window.addEventListener("scroll", () => {
+        const navbar = document.querySelector(".navbar");
+        if (window.scrollY > 100) {
+          navbar.style.background = "rgba(255, 255, 255, 0.95)";
+          navbar.style.backdropFilter = "blur(10px)";
+        } else {
+          navbar.style.background = "var(--white)";
+          navbar.style.backdropFilter = "none";
+        }
+      });
+    </script>
+  </body>
+</html>

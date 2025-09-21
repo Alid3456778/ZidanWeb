@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Gallery - Excellence Academy</title>
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="gallery.css">
+  <style>
+    :root {
+  --primary-gold: #FFD700;
+  --secondary-gold: #FFA500;
+  --dark-gold: #B8860B;
+  --white: #FFFFFF;
+  --light-gray: #F8F9FA;
+  --dark-gray: #2C3E50;
+  --shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
+}
+
+/* Navbar (same as homepage) */
+.navbar {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  background: var(--white);
+  padding: 1rem 2rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  box-shadow: var(--shadow);
+  z-index: 1000;
+}
+.logo {
+  display: flex;
+  align-items: center;
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: var(--dark-gold);
+  text-decoration: none;
+}
+.logo i {
+  margin-right: 0.5rem;
+  font-size: 2rem;
+  color: var(--primary-gold);
+}
+.nav-links {
+  display: flex;
+  list-style: none;
+  gap: 2rem;
+  align-items: center;
+}
+.nav-links a {
+  text-decoration: none;
+  color: var(--dark-gray);
+  font-weight: 500;
+  position: relative;
+}
+.nav-links a:hover,
+.nav-links .active {
+  color: var(--dark-gold);
+}
+.phone-btn {
+  background: var(--primary-gold);
+  color: var(--dark-gray);
+  padding: 0.75rem 1.5rem;
+  border-radius: 25px;
+  text-decoration: none;
+  font-weight: bold;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  transition: all 0.3s ease;
+}
+.phone-btn:hover {
+  background: var(--dark-gold);
+  color: var(--white);
+}
+.hamburger {
+  display: none;
+  flex-direction: column;
+  cursor: pointer;
+}
+.hamburger span {
+  width: 25px;
+  height: 3px;
+  background: var(--dark-gold);
+  margin: 4px 0;
+  border-radius: 3px;
+}
+
+/* Gallery Masonry */
+.gallery-section {
+  padding: 120px 2rem 3rem; /* add top padding for navbar space */
+  background: var(--light-gray);
+}
+.masonry {
+  column-count: 4;
+  column-gap: 1.5rem;
+}
+.masonry-item {
+  break-inside: avoid;
+  margin-bottom: 1.5rem;
+  overflow: hidden;
+  border-radius: 15px;
+  box-shadow: var(--shadow);
+}
+.masonry-item img {
+  width: 100%;
+  display: block;
+  border-radius: 15px;
+  transition: transform 0.3s ease;
+}
+.masonry-item img:hover {
+  transform: scale(1.05);
+}
+
+/* Footer (same as homepage) */
+.footer {
+  background: var(--dark-gray);
+  color: var(--white);
+  padding: 3rem 2rem 1rem;
+}
+.footer-content {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 2rem;
+}
+.footer-section h3 {
+  color: var(--primary-gold);
+  margin-bottom: 1rem;
+}
+.footer-section p,
+.footer-section a {
+  color: var(--white);
+  text-decoration: none;
+  line-height: 1.8;
+}
+.footer-section a:hover {
+  color: var(--primary-gold);
+}
+.social-links {
+  display: flex;
+  gap: 1rem;
+  margin-top: 1rem;
+}
+.social-links a {
+  background: var(--primary-gold);
+  color: var(--dark-gray);
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s ease;
+}
+.social-links a:hover {
+  background: var(--white);
+  transform: translateY(-3px);
+}
+.footer-bottom {
+  text-align: center;
+  margin-top: 2rem;
+  padding-top: 2rem;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  color: rgba(255, 255, 255, 0.7);
+}
+
+/* Responsive */
+@media (max-width: 1200px) {
+  .masonry { column-count: 3; }
+}
+@media (max-width: 768px) {
+  .nav-links {
+    position: fixed;
+    top: 80px;
+    left: -100%;
+    width: 100%;
+    height: calc(100vh - 80px);
+    background: var(--white);
+    flex-direction: column;
+    justify-content: start;
+    padding-top: 2rem;
+    transition: left 0.3s ease;
+  }
+  .nav-links.active { left: 0; }
+  .hamburger { display: flex; }
+  .masonry { column-count: 2; }
+}
+@media (max-width: 480px) {
+  .masonry { column-count: 1; }
+}
+
+  </style>
+</head>
+<body>
+
+  <!-- Navbar -->
+  <nav class="navbar">
+    <a href="/" class="logo">
+      <i class="fas fa-graduation-cap"></i>
+      Excellence Academy
+    </a>
+    <ul class="nav-links" id="navLinks">
+      <li><a href="/">Home</a></li>
+      <li><a href="/courses.html">Courses</a></li>
+      <li><a href="/gallery.html" class="active">Gallery</a></li>
+      <li><a href="/about.html">About Us</a></li>
+      <li><a href="/contact.html">Contact</a></li>
+    </ul>
+    <a href="tel:+1234567890" class="phone-btn">
+      <i class="fas fa-phone"></i>
+      Call Now
+    </a>
+    <div class="hamburger" id="hamburger">
+      <span></span>
+      <span></span>
+      <span></span>
+    </div>
+  </nav>
+
+  <!-- Gallery Masonry -->
+  <section class="gallery-section">
+    <div class="masonry">
+      <div class="masonry-item"><img src="https://source.unsplash.com/random/400x500?education" alt="Gallery 1"></div>
+      <div class="masonry-item"><img src="https://source.unsplash.com/random/400x600?students" alt="Gallery 2"></div>
+      <div class="masonry-item"><img src="https://source.unsplash.com/random/400x400?classroom" alt="Gallery 3"></div>
+      <div class="masonry-item"><img src="https://source.unsplash.com/random/400x550?books" alt="Gallery 4"></div>
+      <div class="masonry-item"><img src="https://source.unsplash.com/random/400x450?library" alt="Gallery 5"></div>
+      <div class="masonry-item"><img src="https://source.unsplash.com/random/400x500?teacher" alt="Gallery 6"></div>
+      <div class="masonry-item"><img src="https://source.unsplash.com/random/400x600?school" alt="Gallery 7"></div>
+      <div class="masonry-item"><img src="https://source.unsplash.com/random/400x450?graduation" alt="Gallery 8"></div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="footer-content">
+      <div class="footer-section">
+        <h3>Excellence Academy</h3>
+        <p>Empowering students with world-class education and practical skills. Join our community of learners and transform your future.</p>
+        <div class="social-links">
+          <a href="#"><i class="fab fa-facebook-f"></i></a>
+          <a href="#"><i class="fab fa-instagram"></i></a>
+          <a href="#"><i class="fab fa-linkedin-in"></i></a>
+          <a href="#"><i class="fab fa-youtube"></i></a>
+        </div>
+      </div>
+      <div class="footer-section">
+        <h3>Quick Links</h3>
+        <p><a href="/courses.html">Our Courses</a></p>
+        <p><a href="/about.html">About Us</a></p>
+        <p><a href="/gallery.html">Gallery</a></p>
+        <p><a href="/contact.html">Contact</a></p>
+        <p><a href="#">Admissions</a></p>
+      </div>
+      <div class="footer-section">
+        <h3>Contact Info</h3>
+        <p><i class="fas fa-map-marker-alt"></i> 123 Education Street, Learning City</p>
+        <p><i class="fas fa-phone"></i> +1 (234) 567-8900</p>
+        <p><i class="fas fa-envelope"></i> info@excellenceacademy.edu</p>
+        <p><i class="fas fa-clock"></i> Mon-Fri: 9AM-6PM</p>
+      </div>
+      <div class="footer-section">
+        <h3>Popular Categories</h3>
+        <p><a href="#">Web Development</a></p>
+        <p><a href="#">Data Science</a></p>
+        <p><a href="#">Digital Marketing</a></p>
+        <p><a href="#">UI/UX Design</a></p>
+        <p><a href="#">Mobile Development</a></p>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>&copy; 2025 Excellence Academy. All rights reserved. | Privacy Policy | Terms of Service</p>
+    </div>
+  </footer>
+
+  <script>
+    // Mobile Nav
+    const hamburger = document.getElementById('hamburger');
+    const navLinks = document.getElementById('navLinks');
+    hamburger.addEventListener('click', () => {
+      navLinks.classList.toggle('active');
+      hamburger.classList.toggle('active');
+    });
+    document.querySelectorAll('.nav-links a').forEach(link => {
+      link.addEventListener('click', () => {
+        navLinks.classList.remove('active');
+        hamburger.classList.remove('active');
+      });
+    });
+  </script>
+</body>
+</html>
