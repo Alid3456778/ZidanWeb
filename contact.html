@@ -726,7 +726,7 @@
           <!-- Google Maps Embed -->
           <iframe
             class="google-map"
-            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3771.9979748355284!2d72.82606431490285!3d19.017615287146632!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3be7ce24db2c0a57%3A0x74f0c02d2df4c1e8!2sEducation%20Street%2C%20Fort%2C%20Mumbai%2C%20Maharashtra%20400001%2C%20India!5e0!3m2!1sen!2sus!4v1640000000000!5m2!1sen!2sus"
+            src="https://maps.google.com/maps?width=600&height=400&hl=en&q=175%2C%20MG%20Road%2C%20Agarwal%20Colony%2C%20Sadar%20Bazaar%2C%20Pune%2C%20Maharashtra%C2%A0411001&t=&z=19&ie=UTF8&iwloc=B&output=embed"
             allowfullscreen=""
             loading="lazy"
             referrerpolicy="no-referrer-when-downgrade"
@@ -848,13 +848,10 @@ ${data.message}`;
 
       // Get directions function
       function getDirections() {
-        const address =
-          "123 Education Street, Learning District, Mumbai, Maharashtra 400001, India";
-        const googleMapsUrl = `https://maps.google.com/maps?daddr=${encodeURIComponent(
-          address
-        )}`;
-        window.open(googleMapsUrl, "_blank");
-      }
+            const address = "2394, East St, New Modikhana, Camp, Pune, Maharashtra 411001";
+            const googleMapsUrl = `https://maps.google.com/maps?daddr=${encodeURIComponent(address)}`;
+            window.open(googleMapsUrl, '_blank');
+        }
 
       // Navbar scroll effect
       window.addEventListener("scroll", () => {
