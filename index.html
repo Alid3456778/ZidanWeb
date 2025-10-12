@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Excellence Academy - Transform Your Future</title>
+    <title>Adarsh Open Learning Academy - Transform Your Future</title>
     <link
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
       rel="stylesheet"
@@ -811,7 +811,7 @@
     <nav class="navbar">
       <div class="logo">
         <i class="fas fa-graduation-cap"></i>
-        Excellence Academy
+        Adarsh Open Learning Academy
       </div>
       <ul class="nav-links" id="navLinks">
         <li><a href="brouse.html">Courses</a></li>
@@ -834,7 +834,7 @@
     <section class="hero" id="hero">
       <div class="hero-content">
         <div class="hero-text">
-          <div class="hero-subtitle">🎓 Excellence Academy</div>
+          <div class="hero-subtitle">🎓 Adarsh Open Learning Academy</div>
           <h1>Transform Your Future Today</h1>
           <p>
             Join thousands of students who have achieved their dreams through
@@ -1046,7 +1046,7 @@
     <footer class="footer">
       <div class="footer-content">
         <div class="footer-section">
-          <h3>Excellence Academy</h3>
+          <h3>Adarsh Open Learning Academy</h3>
           <p>
             Empowering students with world-class education and practical skills
             for over a decade. Join our community of successful learners and
@@ -1107,7 +1107,7 @@
       </div>
       <div class="footer-bottom">
         <p>
-          &copy; 2025 Excellence Academy. All rights reserved. | Privacy Policy
+          &copy; 2025 Adarsh Open Learning Academy. All rights reserved. | Privacy Policy
           | Terms of Service
         </p>
       </div>
@@ -1182,41 +1182,41 @@
         }
       });
 
-      // Contact form handling
-      document
-        .getElementById("contactForm")
-        .addEventListener("submit", function (e) {
-          e.preventDefault();
+//       // Contact form handling
+//       document
+//         .getElementById("contactForm")
+//         .addEventListener("submit", function (e) {
+//           e.preventDefault();
 
-          // Get form data
-          const formData = new FormData(this);
-          const data = Object.fromEntries(formData);
+//           // Get form data
+//           const formData = new FormData(this);
+//           const data = Object.fromEntries(formData);
 
-          // Create mailto link
-          const subject = `Course Inquiry from ${data.name}`;
-          const body = `Name: ${data.name}
-Email: ${data.email}
-Phone: ${data.phone || "Not provided"}
-Course Interest: ${data.course || "General inquiry"}
+//           // Create mailto link
+//           const subject = `Course Inquiry from ${data.name}`;
+//           const body = `Name: ${data.name}
+// Email: ${data.email}
+// Phone: ${data.phone || "Not provided"}
+// Course Interest: ${data.course || "General inquiry"}
 
-Message:
-${data.message}`;
+// Message:
+// ${data.message}`;
 
-          const mailtoLink = `mailto:info@excellenceacademy.edu?subject=${encodeURIComponent(
-            subject
-          )}&body=${encodeURIComponent(body)}`;
+//           const mailtoLink = `mailto:info@excellenceacademy.edu?subject=${encodeURIComponent(
+//             subject
+//           )}&body=${encodeURIComponent(body)}`;
 
-          // Open email client
-          window.location.href = mailtoLink;
+//           // Open email client
+//           window.location.href = mailtoLink;
 
-          // Show success message
-          alert(
-            "Thank you for your interest! Your email client will open to send your inquiry."
-          );
+//           // Show success message
+//           alert(
+//             "Thank you for your interest! Your email client will open to send your inquiry."
+//           );
 
-          // Reset form
-          this.reset();
-        });
+//           // Reset form
+//           this.reset();
+//         });
 
       // Animate elements on scroll
       const observerOptions = {
