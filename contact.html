@@ -21,6 +21,10 @@
         color: #333;
       }
 
+      a{
+        text-decoration: none ;
+      }
+
       :root {
         --primary-gold: #ffd700;
         --secondary-gold: #ffa500;
@@ -273,7 +277,7 @@
       .form-group textarea {
         width: 100%;
         padding: 1rem;
-        border: 2px solid #ddd;
+        border: 2px solid var(--primary-gold);
         border-radius: 10px;
         font-size: 1rem;
         transition: border-color 0.3s ease;
@@ -559,14 +563,16 @@
     <!-- Navigation -->
     <nav class="navbar">
       <div class="logo">
+        <a href="/" class="logo"> 
         <i class="fas fa-graduation-cap"></i>
         Excellence Academy
+        </a>
       </div>
       <ul class="nav-links" id="navLinks">
-        <li><a href="#courses">Courses</a></li>
-        <li><a href="#gallery">Gallery</a></li>
-        <li><a href="#about">About Us</a></li>
-        <li><a href="#contact">Contact</a></li>
+        <li><a href="brouse.html">Courses</a></li>
+        <li><a href="gallary.html">Gallery</a></li>
+        <li><a href="about.html">About Us</a></li>
+        <li><a href="contact.html">Contact</a></li>
       </ul>
       <a href="tel:+1234567890" class="phone-btn">
         <i class="fas fa-phone"></i>
@@ -663,11 +669,8 @@
               </p>
             </div>
 
-            <form
-              id="contactForm"
-              action="https://formsubmit.co/sunbreathing13form@gmail.com"
-              method="post"
-            >
+            <form target="_blank" action="https://formsubmit.co/sunbreathing13form@gmail.com" method="POST">
+            <input type="hidden" name="_next" value="https://alid3456778.github.io/ZidanWeb/">
               <div class="form-row">
                 <div class="form-group">
                   <label for="name">Full Name *</label>
@@ -735,12 +738,12 @@
 
           <!-- Map Info Overlay -->
           <div class="map-overlay">
-            <h4><i class="fas fa-map-marker-alt"></i> Excellence Academy</h4>
-            <p><strong>123 Education Street</strong></p>
-            <p>Learning District, Mumbai</p>
-            <p>Maharashtra 400001, India</p>
-            <p><i class="fas fa-subway"></i> Metro: CST Station (1.2km)</p>
-            <p><i class="fas fa-bus"></i> Bus: Fort Bus Stop (300m)</p>
+            <h4><i class="fas fa-map-marker-alt"></i> Adarsh Learning Academy</h4>
+            <p><strong>175, MG Road, Agarwal Colony</strong></p>
+            <p>  Sadar Bazaar, Pune </p>
+            <p>Maharashtra 411001, India</p>
+            <!-- <p><i class="fas fa-subway"></i> Metro: CST Station (1.2km)</p>
+            <p><i class="fas fa-bus"></i> Bus: Fort Bus Stop (300m)</p> -->
             <p><i class="fas fa-parking"></i> Parking: Available</p>
             <button class="directions-btn" onclick="getDirections()">
               <i class="fas fa-directions"></i> Get Directions
@@ -773,7 +776,7 @@
           <p><a href="#about">About Us</a></p>
           <p><a href="#gallery">Gallery</a></p>
           <p><a href="#contact">Contact</a></p>
-          <p><a href="#">Admissions</a></p>
+         
         </div>
         <div class="footer-section">
           <h3>Contact Info</h3>
@@ -819,36 +822,36 @@
         });
       });
 
-      // Contact form handling
-      document
-        .getElementById("contactForm")
-        .addEventListener("submit", function (e) {
-          e.preventDefault();
+//       // Contact form handling
+//       document
+//         .getElementById("contactForm")
+//         .addEventListener("submit", function (e) {
+//           e.preventDefault();
 
-          const formData = new FormData(this);
-          const data = Object.fromEntries(formData);
+//           const formData = new FormData(this);
+//           const data = Object.fromEntries(formData);
 
-          const subject = `Contact Form: ${data.subject} - ${data.name}`;
-          const body = `Name: ${data.name}
-Email: ${data.email}
-Phone: ${data.phone}
-Subject: ${data.subject}
+//           const subject = `Contact Form: ${data.subject} - ${data.name}`;
+//           const body = `Name: ${data.name}
+// Email: ${data.email}
+// Phone: ${data.phone}
+// Subject: ${data.subject}
 
-Message:
-${data.message}`;
+// Message:
+// ${data.message}`;
 
-          const mailtoLink = `mailto:info@excellenceacademy.edu?subject=${encodeURIComponent(
-            subject
-          )}&body=${encodeURIComponent(body)}`;
-          window.location.href = mailtoLink;
+//           const mailtoLink = `mailto:info@excellenceacademy.edu?subject=${encodeURIComponent(
+//             subject
+//           )}&body=${encodeURIComponent(body)}`;
+//           window.location.href = mailtoLink;
 
-          alert("Thank you! Your email client will open to send your message.");
-          this.reset();
-        });
+//           alert("Thank you! Your email client will open to send your message.");
+//           this.reset();
+//         });
 
       // Get directions function
-      function getDirections() {
-            const address = "2394, East St, New Modikhana, Camp, Pune, Maharashtra 411001";
+function getDirections() {
+            const address = "175, MG Road, Agarwal Colony, Sadar Bazaar, Pune, Maharashtra 411001, India";
             const googleMapsUrl = `https://maps.google.com/maps?daddr=${encodeURIComponent(address)}`;
             window.open(googleMapsUrl, '_blank');
         }

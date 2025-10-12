@@ -22,6 +22,10 @@
         overflow-x: hidden;
       }
 
+      a{
+        text-decoration: none;
+      }
+
       :root {
         --primary-gold: #ffd700;
         --secondary-gold: #ffa500;
@@ -330,14 +334,16 @@
   <body>
     <nav class="navbar">
       <div class="logo">
+        <a href="/" class="logo"> 
         <i class="fas fa-graduation-cap"></i>
         Excellence Academy
+        </a>
       </div>
       <ul class="nav-links" id="navLinks">
-        <li><a href="#courses">Courses</a></li>
-        <li><a href="#gallery">Gallery</a></li>
-        <li><a href="#about">About Us</a></li>
-        <li><a href="#contact">Contact</a></li>
+        <li><a href="brouse.html">Courses</a></li>
+        <li><a href="gallary.html">Gallery</a></li>
+        <li><a href="about.html">About Us</a></li>
+        <li><a href="contact.html">Contact</a></li>
       </ul>
       <a href="tel:+1234567890" class="phone-btn">
         <i class="fas fa-phone"></i>
@@ -354,22 +360,24 @@
       <div class="courses-container">
         <h2 class="section-title">Our Courses</h2>
         <div class="courses-grid">
+
           <!-- Course Card -->
           <div class="course-card">
             <div class="course-image">
               <img
-                src="https://images.unsplash.com/photo-1516321318423-f06f85e504b3?w=600&h=400&fit=crop"
-                alt="Full Stack Development"
+                 src="./assets/images/CourceImage/10th.png"
+            alt="Secondary Course (Class X)"
               />
             </div>
             <div class="course-content">
-              <h3 class="course-title">Full Stack Web Development</h3>
+              <h3 class="course-title">Secondary Course (Class X)</h3>
               <p class="course-description">
-                Learn HTML, CSS, JavaScript, React, Node.js, and databases.
-                Build real-world projects and kickstart your career in web
-                development.
+                 The Course is designed to build
+            a strong educational foundation for learners. It provides essential
+            knowledge, practical skills, and values to help students develop
+            holistically and prepare for higher education or future careers.
               </p>
-              <a href="#" class="inquire-btn">Enquire Now</a>
+              <a href="./XthCourse.html" class="inquire-btn">Enquire Now</a>
             </div>
           </div>
 
@@ -377,17 +385,19 @@
           <div class="course-card">
             <div class="course-image">
               <img
-                src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=600&h=400&fit=crop"
-                alt="Data Science"
+                src="./assets/images/CourceImage/12th.png "
+            alt="Senior Secondary Course (Class XII)"
               />
             </div>
             <div class="course-content">
-              <h3 class="course-title">Data Science & Analytics</h3>
+              <h3 class="course-title">Senior Secondary Course (Class XII)</h3>
               <p class="course-description">
-                Learn Python, Machine Learning, and Data Visualization. Turn raw
-                data into powerful insights for businesses and organizations.
+                The Course is designed
+            to enhance learners’ knowledge, skills, and understanding in both
+            academic and practical fields. It prepares students for higher
+            education, employment, and personal development.
               </p>
-              <a href="#" class="inquire-btn">Enquire Now</a>
+              <a href="./XIIthCourse.html" class="inquire-btn">Enquire Now</a>
             </div>
           </div>
 
@@ -430,17 +440,16 @@
         </div>
         <div class="footer-section">
           <h3>Quick Links</h3>
-          <p><a href="#courses">Our Courses</a></p>
-          <p><a href="#about">About Us</a></p>
-          <p><a href="#gallery">Gallery</a></p>
-          <p><a href="#contact">Contact</a></p>
-          <p><a href="#">Admissions</a></p>
+          <p><a href="./brouse.html">Our Courses</a></p>
+          <p><a href="./about.html">About Us</a></p>
+          <p><a href="./gallary.html">Gallery</a></p>
+          <p><a href="./contact.html">Contact</a></p>
+          
         </div>
         <div class="footer-section">
           <h3>Contact Info</h3>
           <p>
-            <i class="fas fa-map-marker-alt"></i> 123 Education Street, Learning
-            City
+            <i class="fas fa-map-marker-alt"></i> 2394, East St, New Modikhana, Camp, Pune, Maharashtra 411001
           </p>
           <p><i class="fas fa-phone"></i> +1 (234) 567-8900</p>
           <p><i class="fas fa-envelope"></i> info@excellenceacademy.edu</p>
