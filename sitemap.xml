@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  <!-- Replace YOUR_DOMAIN_HERE with your live domain (https://example.com) -->
+  <url><loc>https://YOUR_DOMAIN_HERE/index.html</loc></url>
+  <url><loc>https://YOUR_DOMAIN_HERE/about.html</loc></url>
+  <url><loc>https://YOUR_DOMAIN_HERE/contact.html</loc></url>
+  <url><loc>https://YOUR_DOMAIN_HERE/brouse.html</loc></url>
+  <url><loc>https://YOUR_DOMAIN_HERE/gallary.html</loc></url>
+  <url><loc>https://YOUR_DOMAIN_HERE/XthCourse.html</loc></url>
+  <url><loc>https://YOUR_DOMAIN_HERE/XIIthCourseScience.html</loc></url>
+  <url><loc>https://YOUR_DOMAIN_HERE/XIIthCourseCommerce.html</loc></url>
+  <url><loc>https://YOUR_DOMAIN_HERE/XIIthCourseArts.html</loc></url>
+  <url><loc>https://YOUR_DOMAIN_HERE/apep.html</loc></url>
+  <url><loc>https://YOUR_DOMAIN_HERE/apccep.html</loc></url>
+  <url><loc>https://YOUR_DOMAIN_HERE/mnep.html</loc></url>
+  <url><loc>https://YOUR_DOMAIN_HERE/pmnep.html</loc></url>
+</urlset>
