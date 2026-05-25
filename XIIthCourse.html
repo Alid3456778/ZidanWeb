@@ -15,8 +15,8 @@
     />
     <meta name="theme-color" content="#b8860b" />
     <meta name="format-detection" content="telephone=yes" />
-    <link rel="icon" href="assets/images/ADARSH.jpeg" type="image/jpeg" />
-    <link rel="apple-touch-icon" href="assets/images/ADARSH.jpeg" />
+    <link rel="icon" href="assets/images/logo.jpeg" type="image/jpeg" />
+    <link rel="apple-touch-icon" href="assets/images/logo.jpeg" />
     <link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin />
     <link rel="canonical" href="" id="canonical-link" />
     <meta property="og:site_name" content="Adarsh Open Learning Academy" />
@@ -49,7 +49,7 @@
         const ogUrlEl = document.getElementById("og-url");
         const ogImgEl = document.getElementById("og-image");
         const twImgEl = document.getElementById("twitter-image");
-        const brandImg = location.origin + "/assets/images/ADARSH.jpeg";
+        const brandImg = location.origin + "/assets/images/logo.jpeg";
 
         if (canonicalEl) canonicalEl.href = canonicalUrl;
         if (ogUrlEl) ogUrlEl.content = canonicalUrl;
@@ -99,13 +99,136 @@
         background: #f8f9fa;
       }
       :root {
+        --primary-gold: #ffd700;
+        --white: #ffffff;
+        --light-gray: #f8f9fa;
+        --dark-gray: #2c3e50;
         --dark-gold: #b8860b;
         --shadow: 0 4px 15px rgb(0 0 0 / 0.1);
+      }
+
+      /* Header / Navbar */
+      .site-header {
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        z-index: 1000;
+      }
+
+      .navbar {
+        width: 100%;
+        background: var(--white);
+        padding: 0.85rem 1.25rem;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        box-shadow: var(--shadow);
+      }
+
+      .logo {
+        display: flex;
+        align-items: center;
+        color: var(--dark-gold);
+      }
+
+      .brand {
+        display: flex;
+        align-items: center;
+        gap: 0.75rem;
+        text-decoration: none;
+        color: inherit;
+        white-space: nowrap;
+      }
+
+      .brand-logo {
+        width: 46px;
+        height: 46px;
+        border-radius: 12px;
+        object-fit: cover;
+        box-shadow: 0 6px 18px rgba(0, 0, 0, 0.14);
+      }
+
+      .brand-text {
+        font-size: 1.02rem;
+        font-weight: 800;
+        line-height: 1.1;
+        letter-spacing: 0.2px;
+      }
+
+      .nav-links {
+        display: flex;
+        list-style: none;
+        gap: 1.5rem;
+        align-items: center;
+        margin-left: auto;
+      }
+
+      .nav-actions {
+        display: flex;
+        align-items: center;
+        gap: 0.75rem;
+      }
+
+      .nav-links a {
+        text-decoration: none;
+        color: var(--dark-gray);
+        font-weight: 600;
+        position: relative;
+      }
+
+      .nav-links a::after {
+        content: "";
+        position: absolute;
+        bottom: -6px;
+        left: 0;
+        width: 0;
+        height: 2px;
+        background: var(--primary-gold);
+        transition: width 0.25s ease;
+      }
+
+      .nav-links a:hover::after {
+        width: 100%;
+      }
+
+      .phone-btn {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.5rem;
+        background: var(--dark-gold);
+        color: var(--white);
+        padding: 0.55rem 0.9rem;
+        border-radius: 999px;
+        text-decoration: none;
+        font-weight: 800;
+        box-shadow: 0 10px 25px rgba(184, 134, 11, 0.25);
+      }
+
+      .phone-btn i {
+        font-size: 1rem;
+      }
+
+      .hamburger {
+        display: none;
+        flex-direction: column;
+        gap: 5px;
+        cursor: pointer;
+        padding: 0.35rem;
+        border-radius: 10px;
+      }
+
+      .hamburger span {
+        width: 26px;
+        height: 3px;
+        background: var(--dark-gray);
+        border-radius: 10px;
+        transition: all 0.3s ease;
       }
       .wrap {
         max-width: 1100px;
         margin: 0 auto;
-        padding: 2rem 1rem 3rem;
+        padding: 7rem 1rem 3rem;
       }
       .title {
         text-align: center;
@@ -164,9 +287,74 @@
         text-decoration: none;
         font-weight: 700;
       }
+
+      @media (max-width: 768px) {
+        .nav-links {
+          position: fixed;
+          top: 76px;
+          left: -100%;
+          width: 100%;
+          height: calc(100vh - 76px);
+          background: var(--white);
+          flex-direction: column;
+          justify-content: start;
+          padding-top: 1.25rem;
+          transition: left 0.3s ease;
+          box-shadow: var(--shadow);
+        }
+
+        .nav-links.active {
+          left: 0;
+        }
+
+        .hamburger {
+          display: flex;
+        }
+
+        .brand-text {
+          display: none;
+        }
+
+        .brand-logo {
+          width: 42px;
+          height: 42px;
+          border-radius: 10px;
+        }
+      }
     </style>
   </head>
   <body>
+    <header class="site-header">
+      <nav class="navbar">
+        <div class="logo">
+          <a href="index.html" class="brand" aria-label="Adarsh Open Learning Academy home">
+            <img
+              src="./assets/images/logo.jpeg"
+              alt="Adarsh Open Learning Academy"
+              class="brand-logo"
+            />
+            <span class="brand-text">Adarsh Open Learning Academy</span>
+          </a>
+        </div>
+        <ul class="nav-links" id="navLinks">
+          <li><a href="brouse.html">Courses</a></li>
+          <li><a href="gallary.html">Gallery</a></li>
+          <li><a href="about.html">About Us</a></li>
+          <li><a href="contact.html">Contact</a></li>
+        </ul>
+        <div class="nav-actions">
+          <a href="tel:+919372420996" class="phone-btn">
+            <i class="fas fa-phone"></i>
+            <span>Call Now</span>
+          </a>
+          <div class="hamburger" id="hamburger" aria-label="Toggle menu" role="button" tabindex="0">
+            <span></span>
+            <span></span>
+            <span></span>
+          </div>
+        </div>
+      </nav>
+    </header>
     <main class="wrap">
       <div class="title">
         <h1>12th (Higher Secondary) Courses</h1>
@@ -204,6 +392,29 @@
 
       <a class="back" href="brouse.html">← Back to all courses</a>
     </main>
+    <script>
+      (function () {
+        const hamburger = document.getElementById("hamburger");
+        const navLinks = document.getElementById("navLinks");
+        if (!hamburger || !navLinks) return;
+
+        const toggle = () => {
+          navLinks.classList.toggle("active");
+          hamburger.classList.toggle("active");
+        };
+
+        hamburger.addEventListener("click", toggle);
+        hamburger.addEventListener("keydown", (e) => {
+          if (e.key === "Enter" || e.key === " ") toggle();
+        });
+
+        navLinks.querySelectorAll("a").forEach((a) => {
+          a.addEventListener("click", () => {
+            navLinks.classList.remove("active");
+            hamburger.classList.remove("active");
+          });
+        });
+      })();
+    </script>
   </body>
 </html>
-
