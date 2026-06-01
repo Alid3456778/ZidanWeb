@@ -92,6 +92,7 @@
             line-height: 1.6;
             color: #333;
             background: #FAFAFA;
+            opacity: 0;
         }
 
         :root {
@@ -295,6 +296,10 @@
             margin: 0 auto;
         }
 
+        .gallery-container .loading {
+            min-height: 120px;
+        }
+
         /* Pinterest-style masonry layout (JS positions items) */
         .masonry-grid {
             position: relative;
@@ -306,7 +311,7 @@
             border-radius: 15px;
             overflow: hidden;
             box-shadow: 0 4px 15px rgba(0,0,0,0.1);
-            transition: all 0.4s ease;
+            transition: box-shadow 0.4s ease, transform 0.4s ease;
             cursor: pointer;
             background: var(--white);
             will-change: transform, top, left;
@@ -318,10 +323,36 @@
         }
 
         .gallery-item img {
-            width: 100%;
-            height: auto;
-            display: block;
-            transition: transform 0.4s ease;
+    width: 100%;
+    height: auto;
+    display: block;
+    object-fit: cover;
+    background: #f1f1f1;
+    transition: transform 0.4s ease, opacity 0.35s ease;
+    opacity: 0;
+}
+
+        .gallery-item.loaded img {
+            opacity: 1;
+        }
+
+        .gallery-item::before {
+            content: "";
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(90deg, #f3f3f3 25%, #e8e8e8 50%, #f3f3f3 75%);
+            background-size: 200% 100%;
+            animation: shimmer 1.2s infinite;
+            z-index: 0;
+        }
+
+        .gallery-item.loaded::before {
+            display: none;
+        }
+
+        @keyframes shimmer {
+            0% { background-position: 200% 0; }
+            100% { background-position: -200% 0; }
         }
 
         .gallery-item:hover img {
@@ -341,6 +372,7 @@
             flex-direction: column;
             justify-content: flex-end;
             padding: 1.5rem;
+            z-index: 2;
         }
 
         .gallery-item:hover .gallery-overlay {
@@ -375,8 +407,9 @@
         /* Loading Animation */
         .loading {
             text-align: center;
-            padding: 3rem;
+            padding: 1.5rem 1rem 3rem;
             color: var(--primary-gold);
+            font-weight: 600;
         }
 
         .loading i {
@@ -392,16 +425,17 @@
         /* Lightbox Modal */
         .lightbox {
             position: fixed;
-            top: 0;
-            left: 0;
+            inset: 0;
             width: 100%;
             height: 100%;
-            background: rgba(0, 0, 0, 0.9);
+            background: rgba(0, 0, 0, 0.92);
             z-index: 9999;
             display: none;
             align-items: center;
             justify-content: center;
-            padding: 2rem;
+            padding: 60px 20px 20px;
+            box-sizing: border-box;
+            overflow: hidden;
         }
 
         .lightbox.active {
@@ -409,26 +443,43 @@
         }
 
         .lightbox-content {
-            max-width: 90%;
-            max-height: 90%;
             position: relative;
+            display: flex;
+            flex-direction: column;
+            max-width: min(92vw, 900px);
+            max-height: calc(100vh - 80px);
+            width: auto;
+        }
+
+        .lightbox-image-wrap {
+            flex: 1 1 auto;
+            min-height: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+            border-radius: 10px 10px 0 0;
         }
 
         .lightbox-image {
-            width: 100%;
+            display: block;
+            max-width: 100%;
+            max-height: calc(100vh - 200px);
+            width: auto;
             height: auto;
-            border-radius: 10px;
+            object-fit: contain;
+            border-radius: 10px 10px 0 0;
         }
 
         .lightbox-close {
-            position: absolute;
-            top: -50px;
-            right: 0;
+            position: fixed;
+            top: 14px;
+            right: 18px;
             background: var(--primary-gold);
             color: var(--dark-gray);
             border: none;
-            width: 40px;
-            height: 40px;
+            width: 42px;
+            height: 42px;
             border-radius: 50%;
             cursor: pointer;
             font-size: 1.2rem;
@@ -436,6 +487,8 @@
             align-items: center;
             justify-content: center;
             transition: all 0.3s ease;
+            z-index: 10001;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.4);
         }
 
         .lightbox-close:hover {
@@ -444,22 +497,23 @@
         }
 
         .lightbox-info {
+            flex-shrink: 0;
             background: var(--white);
-            padding: 1.5rem;
+            padding: 1rem 1.5rem;
             border-radius: 0 0 10px 10px;
-            margin-top: -5px;
         }
 
         .lightbox-title {
             color: var(--dark-gold);
-            font-size: 1.3rem;
+            font-size: 1.1rem;
             font-weight: bold;
-            margin-bottom: 0.5rem;
+            margin-bottom: 0.3rem;
         }
 
         .lightbox-description {
             color: var(--dark-gray);
-            line-height: 1.6;
+            line-height: 1.5;
+            font-size: 0.9rem;
         }
 
         /* Footer - Same as homepage */
@@ -637,24 +691,28 @@
             }
         }
 
-        /* Fade in animation for gallery items */
+        /* Gallery items hidden until masonry positions them */
         .gallery-item {
             opacity: 0;
-            animation: fadeInUp 0.6s ease forwards;
+            visibility: hidden;
+        }
+
+        /* JS adds .positioned after layoutMasonry sets top/left/width */
+        .gallery-item.positioned {
+            visibility: visible;
+            animation: fadeInUp 0.5s ease forwards;
         }
 
         @keyframes fadeInUp {
             from {
                 opacity: 0;
-                transform: translateY(30px);
+                transform: translateY(20px);
             }
             to {
                 opacity: 1;
                 transform: translateY(0);
             }
         }
-
-        /* Randomized delays are set via JS when rendering items */
     </style>
 </head>
 <body>
@@ -722,11 +780,13 @@
 
     <!-- Lightbox Modal -->
     <div class="lightbox" id="lightbox">
+        <button class="lightbox-close" onclick="closeLightbox()">
+            <i class="fas fa-times"></i>
+        </button>
         <div class="lightbox-content">
-            <button class="lightbox-close" onclick="closeLightbox()">
-                <i class="fas fa-times"></i>
-            </button>
-            <img src="" alt="" class="lightbox-image" id="lightboxImage">
+            <div class="lightbox-image-wrap">
+                <img src="" alt="" class="lightbox-image" id="lightboxImage">
+            </div>
             <div class="lightbox-info">
                 <div class="lightbox-title" id="lightboxTitle"></div>
                 <div class="lightbox-description" id="lightboxDescription"></div>
@@ -1715,7 +1775,7 @@
                 item.style.width = `${itemWidth}px`;
             });
 
-            items.forEach((item) => {
+            items.forEach((item, idx) => {
                 // Place in the shortest column for a Pinterest-style layout
                 let col = 0;
                 for (let i = 1; i < columns; i++) {
@@ -1729,60 +1789,132 @@
                 item.style.top = `${top}px`;
 
                 columnHeights[col] = top + item.offsetHeight + gap;
+
+                // Reveal item after it's positioned, with a small stagger
+                if (!item.classList.contains('positioned')) {
+                    const delay = (idx % 8) * 55; // stagger in groups, max ~440ms
+                    item.style.animationDelay = `${delay}ms`;
+                    // Use rAF to ensure layout is painted before we trigger animation
+                    requestAnimationFrame(() => {
+                        item.classList.add('positioned');
+                    });
+                }
             });
 
             galleryGrid.style.height = `${Math.max(...columnHeights)}px`;
         }
 
         // Load gallery items
-        function loadGallery() {
+        let renderToken = 0;
+        const INITIAL_BATCH_SIZE = 8;
+        const FOLLOWUP_BATCH_SIZE = 6;
+        const FIRST_PAUSE_MS = 700;
+        const BETWEEN_BATCH_MS = 180;
+
+        async function loadGallery() {
             const galleryGrid = document.getElementById('galleryGrid');
             const loading = document.getElementById('loading');
-            
-            // Show loading
+
+            const myToken = ++renderToken;
+
             loading.style.display = 'block';
+            loading.innerHTML = '<i class="fas fa-spinner"></i><p>Loading amazing moments...</p>';
             galleryGrid.innerHTML = '';
-            
-             // Simulate loading delay
-             setTimeout(() => {
-                 loading.style.display = 'none';
-                 
-                 const itemsToRender = shuffleArray([...filteredData]);
-                 itemsToRender.forEach((item, index) => {
-                     const galleryItem = createGalleryItem(item, index);
-                     galleryGrid.appendChild(galleryItem);
-                 });
+            galleryGrid.style.height = '0px';
 
-                 // Layout after images are available so heights are correct
-                 waitForImages(galleryGrid).then(() => {
+            const itemsToRender = shuffleArray([...filteredData]);
+            const firstBatch = itemsToRender.slice(0, INITIAL_BATCH_SIZE);
+            const remaining = itemsToRender.slice(INITIAL_BATCH_SIZE);
+
+            firstBatch.forEach((item, index) => {
+                const galleryItem = createGalleryItem(item, index);
+                galleryGrid.appendChild(galleryItem);
+            });
+
+            await new Promise(resolve => setTimeout(resolve, FIRST_PAUSE_MS));
+            if (myToken !== renderToken) return;
+
+            await waitForImages(galleryGrid);
+            if (myToken !== renderToken) return;
+
+            layoutMasonry();
+
+            if (!remaining.length) {
+                loading.style.display = 'none';
+                return;
+            }
+
+            loading.innerHTML = '<i class="fas fa-spinner"></i><p>Loading more photos...</p>';
+            loading.style.display = 'block';
+
+            let currentIndex = 0;
+
+            const renderNextBatch = () => {
+                if (myToken !== renderToken) return;
+
+                const batch = remaining.slice(currentIndex, currentIndex + FOLLOWUP_BATCH_SIZE);
+
+                batch.forEach((item, index) => {
+                    const galleryItem = createGalleryItem(item, currentIndex + index + firstBatch.length);
+                    galleryGrid.appendChild(galleryItem);
+                });
+
+                currentIndex += FOLLOWUP_BATCH_SIZE;
+
+                waitForImages(galleryGrid).then(() => {
+                    if (myToken !== renderToken) return;
+
                     layoutMasonry();
-                 });
-                 
-             }, 500);
-         }
 
-         // Create gallery item element
-         function createGalleryItem(data, index) {
-             const item = document.createElement('div');
-             item.className = 'gallery-item';
-             // Randomize animation timing so the items don't appear in a strict sequence
-             item.style.animationDelay = `${(Math.random() * 0.45).toFixed(2)}s`;
-             item.innerHTML = `
-                 <div class="gallery-category">${data.category}</div>
-                 <img src="${data.src}" alt="${data.title}" loading="lazy">
-                 <div class="gallery-overlay">
-                     <div class="gallery-title">${data.title}</div>
-                     <div class="gallery-description">${data.description}</div>
-                 </div>
-             `;
-            
+                    if (currentIndex < remaining.length) {
+                        loading.style.display = 'block';
+                        requestAnimationFrame(() => {
+                            setTimeout(renderNextBatch, BETWEEN_BATCH_MS);
+                        });
+                    } else {
+                        loading.style.display = 'none';
+                    }
+                });
+            };
+
+            requestAnimationFrame(() => {
+                setTimeout(renderNextBatch, BETWEEN_BATCH_MS);
+            });
+        }
+
+        // Create gallery item element
+        function createGalleryItem(data, index) {
+            const item = document.createElement('div');
+            item.className = 'gallery-item';
+            item.innerHTML = `
+                <div class="gallery-category">${data.category}</div>
+                <img src="${data.src}" alt="${data.title}" loading="lazy" decoding="async" fetchpriority="low">
+                <div class="gallery-overlay">
+                    <div class="gallery-title">${data.title}</div>
+                    <div class="gallery-description">${data.description}</div>
+                </div>
+            `;
+
+            const img = item.querySelector('img');
+            const markLoaded = () => {
+                item.classList.add('loaded');
+                requestAnimationFrame(() => layoutMasonry());
+            };
+
+            if (img.complete && img.naturalWidth > 0) {
+                markLoaded();
+            } else {
+                img.addEventListener('load', markLoaded, { once: true });
+                img.addEventListener('error', markLoaded, { once: true });
+            }
+
             // Add click event for lightbox
             item.addEventListener('click', () => {
                 openLightbox(data);
             });
-            
-             return item;
-         }
+
+            return item;
+        }
 
         // Lightbox functionality
         function openLightbox(data) {
@@ -1962,11 +2094,9 @@
 
         // Add fade-in effect for better UX
         window.addEventListener('load', () => {
+            document.body.style.transition = 'opacity 0.35s ease';
             document.body.style.opacity = '1';
-            document.body.style.transition = 'opacity 0.3s ease';
         });
     </script>
 </body>
 </html>
-
-
