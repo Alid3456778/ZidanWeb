@@ -347,42 +347,64 @@
       }
 
       .story-highlights {
-        display: flex;
-        gap: 2rem;
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 1.5rem;
+        align-items: center;
         margin-top: 2rem;
       }
 
-      .highlight-item {
-        text-align: center;
-        flex: 1;
+      .full-width-section {
+        width: 100vw;
+        position: relative;
+        left: 50%;
+        right: 50%;
+        margin-left: -50vw;
+        margin-right: -50vw;
+        background: var(--light-gray);
+        padding: 4rem 0;
       }
 
-      .highlight-item .icon {
-        background: linear-gradient(
-          135deg,
-          var(--primary-gold),
-          var(--secondary-gold)
-        );
-        color: var(--white);
-        width: 60px;
-        height: 60px;
-        border-radius: 50%;
-        display: flex;
+      .full-width-section .highlight-inner {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 2rem;
         align-items: center;
-        justify-content: center;
-        font-size: 1.5rem;
-        margin: 0 auto 1rem;
+        width: calc(100vw - 4rem);
+        max-width: none;
+        margin: 0 auto;
+        padding: 0 2rem;
       }
 
-      .highlight-item h4 {
+      .highlight-image {
+        width: 100%;
+        border-radius: 20px;
+        overflow: hidden;
+        box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+      }
+
+      .highlight-image img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        display: block;
+      }
+
+      .highlight-copy h4 {
         color: var(--dark-gold);
-        font-size: 1.1rem;
-        margin-bottom: 0.5rem;
+        font-size: 2rem;
+        margin-bottom: 1rem;
       }
 
-      .highlight-item p {
-        font-size: 0.9rem;
+      .highlight-copy p {
         color: var(--dark-gray);
+        font-size: 1.1rem;
+        line-height: 1.8;
+        margin-bottom: 1rem;
+      }
+
+      .highlight-copy p:last-child {
+        margin-bottom: 0;
       }
 
       .story-image {
@@ -931,29 +953,6 @@
               enable these students to get an opportunity for further education.
             </p>
 
-            <div class="story-highlights">
-              <div class="highlight-item">
-                <div class="icon">
-                  <i class="fas fa-lightbulb"></i>
-                </div>
-                <h4>Innovation</h4>
-                <p>Cutting-edge curriculum</p>
-              </div>
-              <div class="highlight-item">
-                <div class="icon">
-                  <i class="fas fa-heart"></i>
-                </div>
-                <h4>Integrity</h4>
-                <p>Honest and transparent</p>
-              </div>
-              <div class="highlight-item">
-                <div class="icon">
-                  <i class="fas fa-users"></i>
-                </div>
-                <h4>Inclusivity</h4>
-                <p>Education for everyone</p>
-              </div>
-            </div>
           </div>
           <div class="story-image animate-on-scroll">
             <img
@@ -962,6 +961,26 @@
             />
             <div class="story-badge">15+ Years of Excellence</div>
           </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="story-highlights full-width-section">
+      <div class="highlight-inner container">
+        <div class="highlight-image">
+          <img
+            src="https://ik.imagekit.io/jv1oyso5j/ZidanWebsite/Class%20Room/ClassRoom_15.jpg?updatedAt=1779742182289"
+            alt="Adarsh Open Learning Academy mission"
+          />
+        </div>
+        <div class="highlight-copy">
+          <h4>Our Mission</h4>
+          <p>
+            The mission of Adarsh Open Learning Academy is to improve the education of children and to inspire qualities of leadership, confidence, responsibility and intellectual risk taking among the students.
+          </p>
+          <p>
+            We see in education the opportunity to build a better society. We recognize the increasing interdependence of all people, the need for cooperation, negotiation, and conflict resolution in order to prepare our students to become effective participants in a changing world community.
+          </p>
         </div>
       </div>
     </section>
@@ -1040,7 +1059,7 @@
               <div class="stat-icon">
                 <i class="fas fa-users"></i>
               </div>
-              <span class="stat-number" data-target="10000">0</span>
+              <span class="stat-number" data-target="7000">0</span>
               <div class="stat-label">Students Trained</div>
               <p class="stat-description">
                 Professionals equipped with industry-ready skills across various
@@ -1048,7 +1067,7 @@
               </p>
             </div>
 
-            <div class="stat-item animate-on-scroll">
+            <!-- <div class="stat-item animate-on-scroll">
               <div class="stat-icon">
                 <i class="fas fa-user-tie"></i>
               </div>
@@ -1058,7 +1077,7 @@
                 Industry veterans with extensive experience and proven track
                 records
               </p>
-            </div>
+            </div> -->
 
             <!-- <div class="stat-item animate-on-scroll">
               <div class="stat-icon">
@@ -1075,7 +1094,7 @@
               <div class="stat-icon">
                 <i class="fas fa-trophy"></i>
               </div>
-              <span class="stat-number" data-target="15">0</span>
+              <span class="stat-number" data-target="25">0</span>
               <div class="stat-label">Years of Excellence</div>
               <p class="stat-description">
                 Consistently delivering quality education and student
@@ -1093,9 +1112,7 @@
         <div class="footer-section">
           <h3>Adarsh Open Learning Academy</h3>
           <p>
-            Empowering students with world-class education and practical skills
-            for over two decades. Join our community of successful learners and
-            transform your career.
+            The institute is dedicated to the cause of imparting education to those who couldn't get the opportunity to complete the school education on regular basis due to one reason or the other.
           </p>
           <div class="social-links">
             <a href="#"><i class="fab fa-facebook-f"></i></a>
@@ -1131,7 +1148,7 @@
             <i class="fas fa-envelope"></i>
             <a href="mailto:adarshlearningacademy@gmail.com">adarshlearningacademy@gmail.com</a>
           </p>
-          <p><i class="fas fa-clock"></i> Mon-Fri: 9AM-6PM</p>
+          <p><i class="fas fa-clock"></i> Mon-Sat: 9AM-6PM</p>
         </div>
         <div class="footer-section">
           <!-- <h3>Newsletter</h3>
