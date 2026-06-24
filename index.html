@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+﻿<!doctype html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
@@ -86,6 +86,12 @@
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
       rel="stylesheet"
     />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Oswald:wght@200..700&family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap" rel="stylesheet">
     <style>
       * {
         margin: 0;
@@ -94,7 +100,9 @@
       }
 
       body {
-        font-family: "Arial", sans-serif;
+        font-family: "Poppins", sans-serif;
+         /* font-family: "Playfair Display", serif;
+  font-optical-sizing: auto; */
         line-height: 1.6;
         color: #333;
         overflow-x: hidden;
@@ -734,7 +742,175 @@
         color: rgba(255, 255, 255, 0.7);
       }
 
-      /* Mobile Responsive */
+      /* Main Traid Section - Carousel with Text */
+      .main-traid {
+        padding: 4rem 2rem;
+        background: var(--white);
+      }
+
+      .traid-container {
+        max-width: 1200px;
+        margin: 0 auto;
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 3rem;
+        align-items: center;
+      }
+
+      .carousel-wrapper {
+        position: relative;
+        border-radius: 20px;
+        overflow: hidden;
+        /* box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1); */
+      }
+
+      .carousel-container {
+        position: relative;
+        width: 100%;
+        padding-bottom: 100%; /* 1:1 aspect ratio */
+        /* background: var(--light-gray); */
+      }
+
+      .carousel-slide {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        opacity: 0;
+        transition: opacity 0.6s ease-in-out;
+      }
+
+      .carousel-slide.active {
+        opacity: 1;
+      }
+
+      .carousel-slide img {
+        width: 100%;
+        height: 100%;
+        object-fit: contain;
+        display: block;
+      }
+
+      .carousel-dots {
+        position: absolute;
+        bottom: 20px;
+        left: 50%;
+        transform: translateX(-50%);
+        display: flex;
+        gap: 10px;
+        z-index: 10;
+      }
+
+      .dot {
+        width: 12px;
+        height: 12px;
+        border-radius: 50%;
+        background: rgb(64 55 55 / 50%);
+        cursor: pointer;
+        transition: all 0.3s ease;
+        border: 2px solid var(--white);
+      }
+
+      .dot.active {
+        background: var(--primary-gold);
+        transform: scale(1.3);
+      }
+
+      .dot:hover {
+        background: rgba(255, 215, 0, 0.8);
+      }
+
+      .traid-content {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+      }
+
+      .traid-content h2 {
+        font-size: 2.8rem;
+        color: var(--dark-gold);
+        margin-bottom: 1.5rem;
+        position: relative;
+      }
+
+      .traid-content h2::after {
+        content: "";
+        position: absolute;
+        bottom: -10px;
+        left: 0;
+        width: 80px;
+        height: 4px;
+        background: var(--primary-gold);
+        border-radius: 2px;
+      }
+
+      .traid-content p {
+        font-size: 1.1rem;
+        line-height: 1.8;
+        color: var(--dark-gray);
+        margin-top: 2rem;
+        margin-bottom: 1.5rem;
+      }
+
+      .traid-btn {
+        background: linear-gradient(
+          135deg,
+          var(--primary-gold),
+          var(--secondary-gold)
+        );
+        color: var(--dark-gray);
+        padding: 1rem 2rem;
+        border: none;
+        border-radius: 25px;
+        font-size: 1rem;
+        font-weight: bold;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        display: inline-block;
+        width: fit-content;
+        margin-top: 1rem;
+      }
+
+      .traid-btn:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 8px 25px rgba(255, 215, 0, 0.3);
+      }
+
+      @media (max-width: 768px) {
+        .traid-container {
+          grid-template-columns: 1fr;
+          gap: 2rem;
+        }
+
+        .traid-content h2 {
+          font-size: 2rem;
+        }
+
+        .traid-content p {
+          font-size: 1rem;
+        }
+      }
+
+      @media (max-width: 480px) {
+        .main-traid {
+          padding: 2rem 1rem;
+        }
+
+        .traid-content h2 {
+          font-size: 1.6rem;
+        }
+
+        .carousel-dots {
+          bottom: 15px;
+        }
+
+        .dot {
+          width: 10px;
+          height: 10px;
+        }
+      }
+
       @media (max-width: 768px) {
         .nav-links {
           position: fixed;
@@ -940,6 +1116,31 @@
           justify-content: center;
         }
       }
+
+      .academy-points {
+    list-style: none;
+    padding: 0;
+    margin-top: 2rem;
+}
+
+.academy-points li {
+    position: relative;
+    padding-left: 30px;
+    margin-bottom: 15px;
+    font-size: 1.05rem;
+    line-height: 1.6;
+    color: var(--dark-gray);
+}
+
+.academy-points li::before {
+    content: "✓";
+    position: absolute;
+    left: 0;
+    top: 0;
+    color: var(--dark-gold);
+    font-weight: bold;
+    font-size: 1.2rem;
+}
     </style>
   </head>
   <body>
@@ -947,7 +1148,11 @@
     <header class="site-header">
       <nav class="navbar">
         <div class="logo">
-          <a href="index.html" class="brand" aria-label="Adarsh Open Learning Academy home">
+          <a
+            href="index.html"
+            class="brand"
+            aria-label="Adarsh Open Learning Academy home"
+          >
             <img
               src="./assets/images/logo.jpeg"
               alt="Adarsh Open Learning Academy"
@@ -956,24 +1161,24 @@
             <span class="brand-text">Adarsh Open Learning Academy</span>
           </a>
         </div>
-      <ul class="nav-links" id="navLinks">
-        <li><a href="brouse.html">Courses</a></li>
-        <li><a href="gallary.html">Gallery</a></li>
-        <li><a href="about.html">About Us</a></li>
-        <li><a href="contact.html">Contact</a></li>
-      </ul>
-      <div class="nav-actions">
-        <a href="tel:+919372420996" class="phone-btn">
-          <i class="fas fa-phone"></i>
-          <h3>Call Now</h3>
-        </a>
-        <div class="hamburger" id="hamburger">
-          <span></span>
-          <span></span>
-          <span></span>
+        <ul class="nav-links" id="navLinks">
+          <li><a href="brouse.html">Courses</a></li>
+          <li><a href="gallary.html">Gallery</a></li>
+          <li><a href="about.html">About Us</a></li>
+          <li><a href="contact.html">Contact</a></li>
+        </ul>
+        <div class="nav-actions">
+          <a href="tel:+919372420996" class="phone-btn">
+            <i class="fas fa-phone"></i>
+            <h3>Call Now</h3>
+          </a>
+          <div class="hamburger" id="hamburger">
+            <span></span>
+            <span></span>
+            <span></span>
+          </div>
         </div>
-      </div>
-    </nav>
+      </nav>
     </header>
 
     <!-- Hero Section -->
@@ -983,7 +1188,9 @@
           <div class="hero-subtitle">Adarsh Open Learning Academy</div>
           <h1>Transform Your Future Today</h1>
           <p>
-            The institute is dedicated to the cause of imparting education to those who couldn't get the opportunity to complete the school education on regular basis due to one reason or the other.
+            The institute is dedicated to the cause of imparting education to
+            those who couldn't get the opportunity to complete the school
+            education on regular basis due to one reason or the other.
           </p>
         </div>
         <div class="hero-rightsection">
@@ -1005,6 +1212,88 @@
       </div>
     </section>
 
+    <section class="main-traid">
+      <div class="traid-container">
+        <div class="carousel-wrapper">
+          <div class="carousel-container">
+            <div class="carousel-slide active">
+              <img
+                src="https://ik.imagekit.io/jv1oyso5j/ZidanWebsite/Failed_Banner/Failed3.jpeg"
+                alt="Classroom 1"
+              />
+            </div>
+            <div class="carousel-slide">
+              <img
+                src="https://ik.imagekit.io/jv1oyso5j/ZidanWebsite/Failed_Banner/Failed1.jpeg"
+                alt="Classroom 2"
+              />
+            </div>
+            <div class="carousel-slide">
+              <img
+                src="https://ik.imagekit.io/jv1oyso5j/ZidanWebsite/Failed_Banner/Failed2.jpeg"
+                alt="Classroom 3"
+              />
+            </div>
+            <div class="carousel-slide">
+              <img
+                src="https://ik.imagekit.io/jv1oyso5j/ZidanWebsite/Class%20Room/ClassRoom_4.jpg?updatedAt=1779742182289"
+                alt="Classroom 4"
+              />
+            </div>
+            <div class="carousel-slide">
+              <img
+                src="https://ik.imagekit.io/jv1oyso5j/ZidanWebsite/Class%20Room/ClassRoom_5.jpg?updatedAt=1779742182289"
+                alt="Classroom 5"
+              />
+            </div>
+            <div class="carousel-dots">
+              <span class="dot active" onclick="currentSlide(1)"></span>
+              <span class="dot" onclick="currentSlide(2)"></span>
+              <span class="dot" onclick="currentSlide(3)"></span>
+              <span class="dot" onclick="currentSlide(4)"></span>
+              <span class="dot" onclick="currentSlide(5)"></span>
+            </div>
+          </div>
+        </div>
+        <div class="traid-content">
+          <h2>Your Second Chance to Succeed</h2>
+          <ul class="academy-points">
+            <li>
+              Direct admission opportunities for eligible 8th, 9th & 10th
+              students.
+            </li>
+            <li>
+              Special guidance for students who have failed or discontinued
+              studies.
+            </li>
+            <li>
+              10th and 12th courses in English, Marathi, Hindi & Urdu mediums.
+            </li>
+            <li>Experienced faculty with personalized student support.</li>
+            <li>Exam-focused preparation and confidence-building guidance.</li>
+            <li>
+              Montessori, Nursery & Early Childhood Education training programs.
+            </li>
+            <li>Career-oriented teacher training certifications.</li>
+            
+          </ul>
+
+          <!-- <p>
+        Adarsh Open Learning Academy helps students complete their educational
+        journey through 10th, 12th, and professional teacher training programs.
+        Whether you have failed, dropped out, or want to continue your studies,
+        we provide the guidance and support needed to achieve your goals.
+    </p>
+
+    <p>
+        With courses available in English, Marathi, Hindi, and Urdu mediums,
+        experienced faculty, and flexible learning options, we are committed to
+        making quality education accessible to every learner.
+    </p> -->
+        </div>
+      </div>
+    </section>
+
     <!-- Courses Section -->
     <section class="courses" id="courses">
       <h2 class="section-title">Featured Courses</h2>
@@ -1019,29 +1308,30 @@
             <h3>Secondary Course (Class X)</h3>
             <p>
               Students failed in 5th & 6th std. & age up to 13 years will be
-                admitted to basic course. These students will be given coaching
-                in all the subjects of NIOS. But they will appear for the exam
-                next year i.e. in the month of April.
+              admitted to basic course. These students will be given coaching in
+              all the subjects of NIOS. But they will appear for the exam next
+              year i.e. in the month of April.
             </p>
-            
           </div>
         </div>
-        <div class="course-card">
+        <div class="course-card" data-link="XthCourse.html">
           <div class="course-badge">Popular</div>
           <img
             src="https://ik.imagekit.io/jv1oyso5j/ZidanWebsite/Brouser_Classes/10th-1.png"
             alt="Secondary Course (Class X)"
           />
           <div class="course-content">
-            <h3> (Secondary Course)</h3>
+            <h3>10th (Secondary Course)</h3>
             <p>
               Build a strong foundation with structured learning, practice, and
               guidance to prepare confidently for the Class X examination.
             </p>
-            <a href="XthCourse.html"><button class="cources-btn">CheckOut</button></a>
+            <a href="XthCourse.html"
+              ><button class="cources-btn">CheckOut</button></a
+            >
           </div>
         </div>
-        <div class="course-card">
+        <div class="course-card" data-link="XIIthCourseScience.html">
           <div class="course-badge">Science</div>
           <img
             src="https://ik.imagekit.io/jv1oyso5j/ZidanWebsite/Brouser_Classes/12th-sci.png"
@@ -1053,10 +1343,12 @@
               Focused coaching for core subjects with strong concepts, revision,
               and exam-oriented preparation.
             </p>
-            <a href="XIIthCourseScience.html"><button class="cources-btn">CheckOut</button></a>
+            <a href="XIIthCourseScience.html"
+              ><button class="cources-btn">CheckOut</button></a
+            >
           </div>
         </div>
-        <div class="course-card">
+        <div class="course-card" data-link="XIIthCourseCommerce.html">
           <div class="course-badge">Commerce</div>
           <img
             src="https://ik.imagekit.io/jv1oyso5j/ZidanWebsite/Brouser_Classes/12th-com.png"
@@ -1073,7 +1365,7 @@
             >
           </div>
         </div>
-        <div class="course-card">
+        <div class="course-card" data-link="XIIthCourseArts.html">
           <div class="course-badge">Arts</div>
           <img
             src="https://ik.imagekit.io/jv1oyso5j/ZidanWebsite/Brouser_Classes/12th-art.png"
@@ -1090,7 +1382,7 @@
             >
           </div>
         </div>
-        <div class="course-card">
+        <div class="course-card" data-link="apep.html">
           <div class="course-badge">Programme</div>
           <img
             src="https://ik.imagekit.io/jv1oyso5j/ZidanWebsite/Brouser_Classes/ACC.png"
@@ -1102,17 +1394,22 @@
               Build essential early-childhood education skills with a practical,
               career-oriented educator Programme.
             </p>
-            <a href="apep.html"><button class="cources-btn">CheckOut</button></a>
+            <a href="apep.html"
+              ><button class="cources-btn">CheckOut</button></a
+            >
           </div>
         </div>
-        <div class="course-card">
+        <div class="course-card" data-link="apccep.html">
           <div class="course-badge">Programme</div>
           <img
             src="https://ik.imagekit.io/jv1oyso5j/ZidanWebsite/Brouser_Classes/APCCE.png"
             alt="Advance Professional Childhood Care and Education Programmeme"
           />
           <div class="course-content">
-            <h3>Advance Professional Childhood Care &amp; Education Programmeme (APCCEP)</h3>
+            <h3>
+              Advance Professional Childhood Care &amp; Education Programmeme
+              (APCCEP)
+            </h3>
             <p>
               Advanced training for childcare and early education with a strong
               focus on practical, classroom-ready skills.
@@ -1122,7 +1419,7 @@
             >
           </div>
         </div>
-        <div class="course-card">
+        <div class="course-card" data-link="mnep.html">
           <div class="course-badge">Programme</div>
           <img
             src="https://ik.imagekit.io/jv1oyso5j/ZidanWebsite/Brouser_Classes/MNEP.png"
@@ -1134,22 +1431,28 @@
               Learn Montessori-based teaching methods and nursery education
               foundations for educator careers.
             </p>
-            <a href="mnep.html"><button class="cources-btn">CheckOut</button></a>
+            <a href="mnep.html"
+              ><button class="cources-btn">CheckOut</button></a
+            >
           </div>
         </div>
-        <div class="course-card">
+        <div class="course-card" data-link="pmnep.html">
           <div class="course-badge">Programme</div>
           <img
             src="https://ik.imagekit.io/jv1oyso5j/ZidanWebsite/Brouser_Classes/1MNEP.png"
             alt="Professional Montessori & Nursery Educator Programme"
           />
           <div class="course-content">
-            <h3>Professional Montessori &amp; Nursery Education Programme (PMNEP) </h3>
+            <h3>
+              Professional Montessori &amp; Nursery Education Programme (PMNEP)
+            </h3>
             <p>
-              A professional-level Montessori and nursery educator Programme with
-              deeper training and practical learning.
+              A professional-level Montessori and nursery educator Programme
+              with deeper training and practical learning.
             </p>
-            <a href="pmnep.html"><button class="cources-btn">CheckOut</button></a>
+            <a href="pmnep.html"
+              ><button class="cources-btn">CheckOut</button></a
+            >
           </div>
         </div>
       </div>
@@ -1178,12 +1481,16 @@
           >
             Have Questions? We're Here to Help!
           </h3>
-          <!-- <form
-          target="_blank" 
-            id="contactForm"
+          <form
+            target="_blank"
             action="https://formsubmit.co/adarshlearningacademy@gmail.com"
-            method="post"
+            method="POST"
           >
+            <input
+              type="hidden"
+              name="_next"
+              value="https://alid3456778.github.io/ZidanWeb/"
+            />
             <div class="form-group">
               <label for="name">Full Name</label>
               <input type="text" id="name" name="name" required />
@@ -1215,41 +1522,7 @@
               ></textarea>
             </div>
             <button type="submit" class="submit-btn">Send Message</button>
-          </form> -->
-          <form target="_blank" action="https://formsubmit.co/adarshlearningacademy@gmail.com" method="POST">
-            <input type="hidden" name="_next" value="https://alid3456778.github.io/ZidanWeb/">
-            <div class="form-group">
-              <label for="name">Full Name</label>
-              <input type="text" id="name" name="name" required />
-            </div>
-            <div class="form-group">
-              <label for="email">Email Address</label>
-              <input type="email" id="email" name="email" required />
-            </div>
-            <div class="form-group">
-              <label for="phone">Phone Number</label>
-              <input type="tel" id="phone" name="phone" />
-            </div>
-            <div class="form-group">
-              <label for="course">Course Interest</label>
-              <input
-                type="text"
-                id="course"
-                name="course"
-                placeholder="Which course are you interested in?"
-              />
-            </div>
-            <div class="form-group">
-              <label for="message">Your Message</label>
-              <textarea
-                id="message"
-                name="message"
-                rows="5"
-                placeholder="Tell us about your goals and how we can help you..."
-              ></textarea>
-            </div>
-            <button type="submit" class="submit-btn">Send Message</button>
-            </form>
+          </form>
         </div>
       </div>
     </section>
@@ -1263,7 +1536,9 @@
         <div class="footer-section">
           <h3>Adarsh Open Learning Academy</h3>
           <p>
-            The institute is dedicated to the cause of imparting education to those who couldn't get the opportunity to complete the school education on regular basis due to one reason or the other.
+            The institute is dedicated to the cause of imparting education to
+            those who couldn't get the opportunity to complete the school
+            education on regular basis due to one reason or the other.
           </p>
           <div class="social-links">
             <a href="#"><i class="fab fa-facebook-f"></i></a>
@@ -1278,7 +1553,6 @@
           <p><a href="./about.html">About Us</a></p>
           <p><a href="./gallary.html">Gallery</a></p>
           <p><a href="./contact.html">Contact</a></p>
-          
         </div>
         <div class="footer-section">
           <h3>Contact Info</h3>
@@ -1298,49 +1572,28 @@
           </p>
           <p>
             <i class="fas fa-envelope"></i>
-            <a href="mailto:adarshlearningacademy@gmail.com">adarshlearningacademy@gmail.com</a>
+            <a href="mailto:adarshlearningacademy@gmail.com"
+              >adarshlearningacademy@gmail.com</a
+            >
           </p>
           <p><i class="fas fa-clock"></i> Mon-Sat: 9AM-6PM</p>
         </div>
-        <div class="footer-section">
-          <!-- <h3>Newsletter</h3>
-          <p>Stay updated with our latest courses and educational content.</p>
-          <div style="margin-top: 1rem">
-            <input
-              type="email"
-              placeholder="Enter your email"
-              style="
-                padding: 0.7rem;
-                border: none;
-                border-radius: 5px;
-                width: 70%;
-                margin-right: 10px;
-              "
-            />
-            <button
-              style="
-                padding: 0.7rem 1rem;
-                background: var(--primary-gold);
-                border: none;
-                border-radius: 5px;
-                cursor: pointer;
-              "
-            >
-              Subscribe
-            </button>
-          </div> -->
-        </div>
+        <div class="footer-section"></div>
       </div>
       <div class="footer-bottom">
         <p>
-          &copy; 2025 Adarsh Open Learning Academy. All rights reserved. | Privacy Policy
-          | Terms of Service
+          &copy; 2025 Adarsh Open Learning Academy. All rights reserved. |
+          Privacy Policy | Terms of Service
         </p>
       </div>
     </footer>
     <button
       class="floating-enquire"
-      onclick="document.getElementById('contact-form').scrollIntoView({behavior: 'smooth'})"
+      onclick="
+        document
+          .getElementById('contact-form')
+          .scrollIntoView({ behavior: 'smooth' })
+      "
     >
       <i class="fas fa-comment-dots"></i>
     </button>
@@ -1349,7 +1602,7 @@
       // Hero Image Slider
       const hero = document.getElementById("hero");
       const images = [
-        "https://ik.imagekit.io/jv1oyso5j/ZidanWebsite/Banners/st1.jpeg",
+        "https://ik.imagekit.io/jv1oyso5j/ZidanWebsite/Class%20Room/ClassRoom_5.jpg?updatedAt=1779742182289",
         "https://ik.imagekit.io/jv1oyso5j/ZidanWebsite/Banners/st2.jpeg",
         "https://ik.imagekit.io/jv1oyso5j/ZidanWebsite/Banners/st3.jpeg",
         "https://ik.imagekit.io/jv1oyso5j/ZidanWebsite/Banners/st4.jpeg",
@@ -1408,42 +1661,6 @@
         }
       });
 
-//       // Contact form handling
-//       document
-//         .getElementById("contactForm")
-//         .addEventListener("submit", function (e) {
-//           e.preventDefault();
-
-//           // Get form data
-//           const formData = new FormData(this);
-//           const data = Object.fromEntries(formData);
-
-//           // Create mailto link
-//           const subject = `Course Inquiry from ${data.name}`;
-//           const body = `Name: ${data.name}
-// Email: ${data.email}
-// Phone: ${data.phone || "Not provided"}
-// Course Interest: ${data.course || "General inquiry"}
-
-// Message:
-// ${data.message}`;
-
-//           const mailtoLink = `mailto:adarshlearningacademy@gmail.com?subject=${encodeURIComponent(
-//             subject
-//           )}&body=${encodeURIComponent(body)}`;
-
-//           // Open email client
-//           window.location.href = mailtoLink;
-
-//           // Show success message
-//           alert(
-//             "Thank you for your interest! Your email client will open to send your inquiry."
-//           );
-
-//           // Reset form
-//           this.reset();
-//         });
-
       // Animate elements on scroll
       const observerOptions = {
         threshold: 0.1,
@@ -1473,7 +1690,7 @@
       statItems.forEach((item) => {
         const numberElement = item.querySelector(".stat-number");
         const targetNumber = parseInt(
-          numberElement.textContent.replace("+", "").replace("%", "")
+          numberElement.textContent.replace("+", "").replace("%", ""),
         );
         let currentNumber = 0;
         const increment = Math.ceil(targetNumber / 100); // Adjust speed here
@@ -1487,8 +1704,8 @@
               (numberElement.textContent.includes("+")
                 ? "+"
                 : numberElement.textContent.includes("%")
-                ? "%"
-                : "");
+                  ? "%"
+                  : "");
             setTimeout(updateNumber, 20); // Adjust speed here
           }
         };
@@ -1503,13 +1720,69 @@
               }
             });
           },
-          { threshold: 0.5 }
+          { threshold: 0.5 },
         );
 
         observer.observe(item);
       });
+
+      // Carousel Functionality
+      let currentSlideIndex = 1;
+      let autoSlideTimer;
+
+      function currentSlide(n) {
+        clearTimeout(autoSlideTimer);
+        showSlide((currentSlideIndex = n));
+        startAutoSlide();
+      }
+
+      function showSlide(n) {
+        const slides = document.querySelectorAll(".carousel-slide");
+        const dots = document.querySelectorAll(".dot");
+
+        if (n > slides.length) {
+          currentSlideIndex = 1;
+        }
+        if (n < 1) {
+          currentSlideIndex = slides.length;
+        }
+
+        slides.forEach((slide) => {
+          slide.classList.remove("active");
+        });
+        dots.forEach((dot) => {
+          dot.classList.remove("active");
+        });
+
+        if (slides[currentSlideIndex - 1]) {
+          slides[currentSlideIndex - 1].classList.add("active");
+        }
+        if (dots[currentSlideIndex - 1]) {
+          dots[currentSlideIndex - 1].classList.add("active");
+        }
+      }
+
+      function startAutoSlide() {
+        autoSlideTimer = setTimeout(() => {
+          currentSlideIndex++;
+          showSlide(currentSlideIndex);
+          startAutoSlide();
+        }, 5000); // Change slide every 5 seconds
+      }
+
+      // Initialize carousel
+      showSlide(currentSlideIndex);
+      startAutoSlide();
+
+      document.querySelectorAll(".course-card").forEach((card) => {
+        card.addEventListener("click", () => {
+          const link = card.dataset.link;
+
+          if (link) {
+            window.location.href = link;
+          }
+        });
+      });
     </script>
   </body>
 </html>
-
-
